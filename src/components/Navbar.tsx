@@ -16,19 +16,6 @@ const Navbar = () => {
   const navItemsRef = useRef<(HTMLElement | null)[]>([]);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
-  // Reset the navItemsRef array when items change
-  const resetNavItemsRef = () => {
-    navItemsRef.current = [];
-    return null; // Return null to avoid React warning about void returns
-  };
-
-  // Add items to the navItemsRef array
-  const addToNavItemsRef = (el: HTMLElement | null) => {
-    if (el && !navItemsRef.current.includes(el)) {
-      navItemsRef.current.push(el);
-    }
-  };
-
   // Create a ref callback that adds elements to our array
   const createRefCallback = <T extends HTMLElement>(index: number): RefCallback<T> => {
     return (element: T | null) => {

@@ -78,7 +78,7 @@ const About = () => {
         return () => {
           splitText.revert();
         };
-      } catch (error) {
+      } catch {
         // Fallback animation if SplitText fails
         gsap.fromTo(
           textRef.current,
