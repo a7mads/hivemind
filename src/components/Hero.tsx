@@ -1,12 +1,18 @@
 import React from 'react';
 
+// You can easily switch between these background images by changing the imagePath variable
+// hero-bg.jpg: Modern smart home with tablet control
+// hero-bg-alt1.jpg: Smart home with modern devices
+// hero-bg-alt2.jpg: Futuristic smart home setup with voice control
+const imagePath = '/hero-bg.jpg';
+
 const Hero = () => {
   return (
     <section className="relative h-screen flex items-center">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero-bg.jpg"
+          src={imagePath}
           alt="Smart home"
           className="w-full h-full object-cover brightness-[0.7]"
         />
