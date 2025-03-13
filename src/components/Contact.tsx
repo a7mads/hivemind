@@ -1,6 +1,101 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+  
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    success: false,
+    error: null as string | null
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submission started');
+    
+    // Validate form
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setStatus({
+        ...status,
+        error: 'Please fill in all required fields'
+      });
+      console.log('Validation failed');
+      return;
+    }
+    
+    setStatus({
+      ...status,
+      submitting: true,
+      error: null
+    });
+    
+    try {
+      console.log('Sending fetch request to /api/contact');
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      console.log('Response received:', response.status);
+      const data = await response.json();
+      console.log('Response data:', data);
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
+      
+      // Reset form on success
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+      
+      setStatus({
+        submitting: false,
+        submitted: true,
+        success: true,
+        error: null
+      });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setStatus(prev => ({ ...prev, submitted: false }));
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus({
+        submitting: false,
+        submitted: true,
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to send message'
+      });
+    }
+  };
+
+  // Add debugging to check if component is mounted properly
+  useEffect(() => {
+    console.log('Contact component mounted');
+  }, []);
+
   return (
     <section id="contact" className="section">
       <div className="container">
@@ -10,7 +105,19 @@ const Contact = () => {
         </p>
         
         <div className="max-w-3xl mx-auto mt-12">
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {status.submitted && (
+            <div className={`p-4 mb-6 rounded-md ${status.success ? 'bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-400'}`}>
+              {status.success 
+                ? 'Thank you for your message! We will get back to you soon.' 
+                : `Failed to send message: ${status.error}`}
+            </div>
+          )}
+          
+          <form 
+            className="grid grid-cols-1 md:grid-cols-2 gap-6" 
+            onSubmit={handleSubmit}
+            method="POST"
+          >
             <div className="space-y-2">
               <label htmlFor="name" className="block font-medium">
                 Name
@@ -19,6 +126,8 @@ const Contact = () => {
                 type="text"
                 id="name"
                 name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 placeholder="Your name"
                 required
@@ -33,6 +142,8 @@ const Contact = () => {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 placeholder="Your email"
                 required
@@ -47,6 +158,8 @@ const Contact = () => {
                 type="tel"
                 id="phone"
                 name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 placeholder="Your phone number"
               />
@@ -59,6 +172,8 @@ const Contact = () => {
               <select
                 id="subject"
                 name="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 required
               >
@@ -79,6 +194,8 @@ const Contact = () => {
                 id="message"
                 name="message"
                 rows={5}
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 placeholder="Tell us about your project"
                 required
@@ -89,8 +206,15 @@ const Contact = () => {
               <button
                 type="submit"
                 className="btn-primary w-full md:w-auto"
+                disabled={status.submitting}
+                onClick={(e) => {
+                  // Additional click handler as a backup
+                  if (!status.submitting) {
+                    handleSubmit(e);
+                  }
+                }}
               >
-                Get a Free Consultation
+                {status.submitting ? 'Sending...' : 'Get a Free Consultation'}
               </button>
             </div>
           </form>
@@ -98,8 +222,8 @@ const Contact = () => {
           <div className="mt-12 flex flex-col md:flex-row justify-center gap-8 text-center">
             <div>
               <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-              <a href="mailto:info@hivemind.com" className="text-[var(--secondary)] hover:underline">
-                info@hivemind.com
+              <a href="mailto:info@hivemind.ae" className="text-[var(--secondary)] hover:underline">
+                info@hivemind.ae
               </a>
             </div>
             
