@@ -72,9 +72,13 @@ export async function POST(request: NextRequest) {
 
     const subjectText = subjectOptions[subject as keyof typeof subjectOptions] || 'Website Contact Form';
     
+    // Format the from field with a display name
+    const fromEmail = process.env.EMAIL_FROM || 'info@hivemind.ae';
+    const formattedFrom = `Hivemind Website <${fromEmail}>`;
+    
     // Email to send to you
     const mailOptions = {
-      from: process.env.EMAIL_FROM || 'website@hivemind.ae',
+      from: formattedFrom,
       to: 'info@hivemind.ae',
       replyTo: email,
       subject: `[Hivemind Contact] ${subjectText}`,
@@ -114,7 +118,7 @@ export async function POST(request: NextRequest) {
     if (process.env.SEND_CONFIRMATION === 'true') {
       console.log('Sending confirmation email to user');
       const confirmationMail = {
-        from: process.env.EMAIL_FROM || 'info@hivemind.ae',
+        from: formattedFrom,
         to: email,
         subject: 'Thank you for contacting Hivemind',
         html: `
