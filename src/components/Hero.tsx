@@ -1,17 +1,14 @@
 import React from 'react';
-import Image from 'next/image';
 
 const Hero = () => {
   return (
     <section className="relative h-screen flex items-center">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
-        <Image
+        <img
           src="/hero-bg.jpg"
           alt="Smart home"
-          fill
-          priority
-          className="object-cover brightness-[0.7]"
+          className="w-full h-full object-cover brightness-[0.7]"
         />
       </div>
       
