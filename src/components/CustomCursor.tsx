@@ -8,6 +8,9 @@ const CustomCursor = () => {
   const followerRef = useRef<HTMLDivElement | null>(null);
   
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') return;
+    
     // Create cursor elements
     const cursor = document.createElement('div');
     cursor.className = 'fixed w-4 h-4 rounded-full bg-[var(--accent)] z-[9999] pointer-events-none mix-blend-difference';
