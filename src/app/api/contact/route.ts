@@ -74,9 +74,9 @@ export async function POST(request: NextRequest) {
     
     // Format the from field with a display name
     const fromEmail = process.env.EMAIL_FROM || 'info@hivemind.ae';
-    const formattedFrom = `Hivemind Website <${fromEmail}>`;
+    const formattedFrom = `Hivemind <${fromEmail}>`;
     
-    // Email to send to you
+    // Email to send to you (admin notification)
     const mailOptions = {
       from: formattedFrom,
       to: 'info@hivemind.ae',
@@ -104,19 +104,21 @@ export async function POST(request: NextRequest) {
       `,
     };
 
-    console.log('Sending email with options:', {
+    console.log('Sending admin notification email with options:', {
       from: mailOptions.from,
       to: mailOptions.to,
       subject: mailOptions.subject
     });
 
-    // Send the email
+    // Send the email to admin
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info.messageId);
+    console.log('Admin notification email sent successfully:', info.messageId);
 
-    // Optional: Send confirmation email to the user
-    if (process.env.SEND_CONFIRMATION === 'true') {
-      console.log('Sending confirmation email to user');
+    // Always send confirmation email to the user (unless explicitly disabled)
+    const sendConfirmation = process.env.SEND_CONFIRMATION !== 'false';
+    
+    if (sendConfirmation) {
+      console.log('Sending confirmation email to user:', email);
       const confirmationMail = {
         from: formattedFrom,
         to: email,
@@ -152,7 +154,7 @@ export async function POST(request: NextRequest) {
       };
       
       await transporter.sendMail(confirmationMail);
-      console.log('Confirmation email sent to user');
+      console.log('Confirmation email sent to user successfully');
     }
 
     // Determine if this is a form submission or API call
