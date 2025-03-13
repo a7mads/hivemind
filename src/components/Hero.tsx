@@ -4,7 +4,12 @@ import React from 'react';
 // hero-bg.jpg: Modern smart home with tablet control
 // hero-bg-alt1.jpg: Smart home with modern devices
 // hero-bg-alt2.jpg: Futuristic smart home setup with voice control
-const imagePath = '/hero-bg.jpg';
+// hero-bg-alt3.jpg: Sleek modern smart home with minimalist design
+// hero-bg-alt4.jpg: Contemporary smart home with elegant aesthetic
+// hero-bg-alt5.jpg: High-tech smart home with futuristic interface
+// hero-bg-alt6.jpg: Elegant living room with smart home integration
+// hero-bg-alt7.jpg: Modern smart home with advanced technology display
+const imagePath = '/hero-bg-alt3.jpg'; // Change this to try different images
 
 const Hero = () => {
   return (
