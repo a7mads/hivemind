@@ -13,7 +13,7 @@ if (typeof window !== 'undefined') {
 }
 
 // Custom SplitText implementation (simplified version of GSAP's premium SplitText)
-export class SplitText {
+class CustomSplitText {
   private element: HTMLElement;
   private originalHTML: string;
   public chars: HTMLElement[] = [];
@@ -86,7 +86,7 @@ export class SplitText {
 }
 
 // Custom DrawSVG implementation (simplified version)
-export const DrawSVGPlugin = {
+const CustomDrawSVGPlugin = {
   name: "drawSVG",
   init(target: SVGElement, vars: any) {
     // Check if it's an SVG path element
@@ -107,4 +107,7 @@ export const DrawSVGPlugin = {
 };
 
 // Export GSAP and plugins
-export { gsap, ScrollTrigger }; 
+export { gsap, ScrollTrigger };
+// Export our custom implementations with the names expected by the components
+export const SplitText = CustomSplitText;
+export const DrawSVGPlugin = CustomDrawSVGPlugin; 
