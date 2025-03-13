@@ -167,7 +167,7 @@ export const parallaxScrollEffect = (element: HTMLElement, speed: number = 0.5) 
 };
 
 // Text scramble effect
-export const textScrambleEffect = (element: HTMLElement, finalText: string, duration: number = 2) => {
+export const textScrambleEffect = (element: HTMLElement, finalText: string) => {
   const chars = '!<>-_\\/[]{}—=+*^?#________';
   const originalText = finalText;
   let currentText = '';

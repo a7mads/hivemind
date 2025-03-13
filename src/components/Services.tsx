@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { gsap, ScrollTrigger, SplitText } from '../utils/gsapPlugins';
 import { card3DHoverEffect } from '../utils/gsapAnimations';
 
@@ -341,7 +340,12 @@ const Services = () => {
               >
                 <div className="w-20 h-20 flex items-center justify-center rounded-full bg-[var(--primary)] bg-opacity-5 p-4">
                   <div className="w-full h-full" dangerouslySetInnerHTML={{ 
-                    __html: `<object type="image/svg+xml" data="${service.icon}" class="w-full h-full" ref=${(el: any) => addToSvgRef(el, index)}></object>` 
+                    __html: `<object type="image/svg+xml" data="${service.icon}" class="w-full h-full" ref=${(el: HTMLObjectElement | null) => {
+                      if (el && el.contentDocument) {
+                        const svg = el.contentDocument.querySelector('svg');
+                        if (svg) addToSvgRef(svg as unknown as SVGSVGElement, index);
+                      }
+                    }}></object>` 
                   }} />
                 </div>
               </div>
