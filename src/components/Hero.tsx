@@ -18,8 +18,6 @@ const imagePath = '/hero-bg-alt3.jpg'; // Change this to try different images
 
 const Hero = () => {
   // Create refs for elements we want to animate
-  const headingRef = useRef<HTMLHeadingElement | null>(null);
-  const paragraphRef = useRef<HTMLParagraphElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const backgroundRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);

@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import { gsap, ScrollTrigger } from '../utils/gsapPlugins';
+import { gsap } from '../utils/gsapPlugins';
 
 interface HorizontalScrollProps {
   children: React.ReactNode;
   className?: string;
-  speed?: number;
   containerClassName?: string;
   pinSpacing?: boolean;
 }
@@ -14,7 +13,6 @@ interface HorizontalScrollProps {
 const HorizontalScroll: React.FC<HorizontalScrollProps> = ({
   children,
   className = '',
-  speed = 1,
   containerClassName = '',
   pinSpacing = true,
 }) => {

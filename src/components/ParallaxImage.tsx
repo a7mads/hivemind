@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import { gsap, ScrollTrigger } from '../utils/gsapPlugins';
+import { gsap } from '../utils/gsapPlugins';
 
 interface ParallaxImageProps {
   src: string;

@@ -88,7 +88,7 @@ class CustomSplitText {
 // Custom DrawSVG implementation (simplified version)
 const CustomDrawSVGPlugin = {
   name: "drawSVG",
-  init(target: SVGElement, vars: any) {
+  init(target: SVGElement, vars: Record<string, unknown>) {
     // Check if it's an SVG path element
     if (!target || target.tagName !== 'path') return false;
     
