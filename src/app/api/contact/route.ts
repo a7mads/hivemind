@@ -1,13 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Add CORS headers helper function
+function corsHeaders() {
+  return {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  };
+}
+
+// Handle OPTIONS request for CORS preflight
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders() });
+}
+
 export async function POST(request: NextRequest) {
   console.log('API route handler called');
   
   try {
-    // Parse the request body
-    const body = await request.json();
-    console.log('Request body:', body);
+    // Parse the request body based on content type
+    let body;
+    const contentType = request.headers.get('content-type') || '';
+    
+    if (contentType.includes('application/json')) {
+      body = await request.json();
+      console.log('Parsed JSON request body:', body);
+    } else {
+      // Handle form data
+      const formData = await request.formData();
+      body = Object.fromEntries(formData.entries());
+      console.log('Parsed form data request body:', body);
+    }
     
     const { name, email, phone, subject, message } = body;
 
@@ -16,7 +40,7 @@ export async function POST(request: NextRequest) {
       console.log('Missing required fields');
       return NextResponse.json(
         { error: 'Missing required fields' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders() }
       );
     }
 
@@ -61,7 +85,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
         <p><strong>Subject:</strong> ${subjectText}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${message.toString().replace(/\n/g, '<br>')}</p>
       `,
       text: `
         New Contact Form Submission
@@ -100,7 +124,7 @@ export async function POST(request: NextRequest) {
           <p>Here's a summary of your message:</p>
           <p><strong>Subject:</strong> ${subjectText}</p>
           <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
+          <p>${message.toString().replace(/\n/g, '<br>')}</p>
           <br>
           <p>Best regards,</p>
           <p>The Hivemind Team</p>
@@ -127,13 +151,35 @@ export async function POST(request: NextRequest) {
       console.log('Confirmation email sent to user');
     }
 
+    // Determine if this is a form submission or API call
+    const isFormSubmission = !contentType.includes('application/json');
+    
+    if (isFormSubmission) {
+      // For traditional form submissions, redirect back to the homepage with a success parameter
+      return NextResponse.redirect(new URL('/?success=true', request.url), { 
+        headers: corsHeaders() 
+      });
+    }
+
     console.log('API route completed successfully');
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { headers: corsHeaders() });
   } catch (error) {
     console.error('Error sending email:', error);
+    
+    // Check if this was a form submission
+    const contentType = request.headers.get('content-type') || '';
+    const isFormSubmission = !contentType.includes('application/json');
+    
+    if (isFormSubmission) {
+      // For traditional form submissions, redirect back with an error parameter
+      return NextResponse.redirect(new URL('/?error=true', request.url), { 
+        headers: corsHeaders() 
+      });
+    }
+    
     return NextResponse.json(
       { error: 'Failed to send email' },
-      { status: 500 }
+      { status: 500, headers: corsHeaders() }
     );
   }
 } 

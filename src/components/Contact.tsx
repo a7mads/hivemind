@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -82,6 +83,42 @@ const Contact = () => {
       
     } catch (error) {
       console.error('Error submitting form:', error);
+      
+      // Try fallback method - submit the form directly
+      if (formRef.current) {
+        console.log('Trying fallback form submission method');
+        
+        // Create a hidden form for traditional submission
+        const fallbackForm = document.createElement('form');
+        fallbackForm.method = 'POST';
+        fallbackForm.action = '/api/contact';
+        fallbackForm.style.display = 'none';
+        
+        // Add form fields
+        for (const [key, value] of Object.entries(formData)) {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.name = key;
+          input.value = value as string;
+          fallbackForm.appendChild(input);
+        }
+        
+        // Add to document, submit, and remove
+        document.body.appendChild(fallbackForm);
+        fallbackForm.submit();
+        document.body.removeChild(fallbackForm);
+        
+        // Show submitting state
+        setStatus({
+          submitting: true,
+          submitted: true,
+          success: true,
+          error: null
+        });
+        
+        return;
+      }
+      
       setStatus({
         submitting: false,
         submitted: true,
@@ -114,9 +151,12 @@ const Contact = () => {
           )}
           
           <form 
+            ref={formRef}
             className="grid grid-cols-1 md:grid-cols-2 gap-6" 
             onSubmit={handleSubmit}
             method="POST"
+            action="/api/contact"
+            encType="application/json"
           >
             <div className="space-y-2">
               <label htmlFor="name" className="block font-medium">
