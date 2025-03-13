@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./out:/app/out
+    environment:
+      - NODE_ENV=production
+    command: npm run build
+
+  nginx:
+    # This assumes you already have an Nginx container
+    # Replace 'your-nginx-container' with your actual Nginx container name
+    image: your-nginx-container
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./out:/usr/share/nginx/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - nextjs 
