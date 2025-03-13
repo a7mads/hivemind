@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 
 // You can easily switch between these background images by changing the imagePath variable
@@ -12,6 +14,14 @@ import React from 'react';
 const imagePath = '/hero-bg-alt3.jpg'; // Change this to try different images
 
 const Hero = () => {
+  // Function to scroll to the contact section when the button is clicked
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative h-screen flex items-center">
       {/* Background image */}
@@ -32,7 +42,10 @@ const Hero = () => {
           <p className="text-xl md:text-2xl mb-8">
             Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.
           </p>
-          <button className="btn-primary bg-[var(--accent)] text-[var(--primary)] hover:bg-white">
+          <button 
+            onClick={scrollToContact}
+            className="btn-primary bg-[var(--accent)] text-[var(--primary)] hover:bg-white transition-colors duration-300"
+          >
             Get a Free Consultation
           </button>
         </div>
