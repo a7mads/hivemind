@@ -17,20 +17,75 @@ const Contact = () => {
     error: null as string | null
   });
 
+  const [fieldErrors, setFieldErrors] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const validateField = (name: string, value: string) => {
+    if (name === 'email' && value && !/^\S+@\S+\.\S+$/.test(value)) {
+      return 'Please enter a valid email address';
+    }
+    
+    if (value.trim() === '' && name !== 'phone') {
+      return 'This field is required';
+    }
+    
+    return '';
+  };
+
+  const validateForm = () => {
+    const newFieldErrors = {
+      name: validateField('name', formData.name),
+      email: validateField('email', formData.email),
+      subject: validateField('subject', formData.subject),
+      message: validateField('message', formData.message)
+    };
+    
+    setFieldErrors(newFieldErrors);
+    
+    // Check if any field has an error
+    return !Object.values(newFieldErrors).some(error => error !== '');
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear field error when user types
+    if (fieldErrors[name as keyof typeof fieldErrors]) {
+      setFieldErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    const error = validateField(name, value);
+    
+    setFieldErrors(prev => ({
+      ...prev,
+      [name]: error
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submission started');
     
-    // Validate form
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+    // Validate all fields
+    const isValid = validateForm();
+    
+    if (!isValid) {
       setStatus({
         ...status,
-        error: 'Please fill in all required fields'
+        submitted: true,
+        success: false,
+        error: 'Please fill in all required fields correctly'
       });
       console.log('Validation failed');
       return;
@@ -142,11 +197,11 @@ const Contact = () => {
         </p>
         
         <div className="max-w-3xl mx-auto mt-12">
-          {status.submitted && (
+          {(status.submitted || status.error) && (
             <div className={`p-4 mb-6 rounded-md ${status.success ? 'bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-400'}`}>
               {status.success 
                 ? 'Thank you for your message! We will get back to you soon.' 
-                : `Failed to send message: ${status.error}`}
+                : `${status.error || 'An error occurred. Please try again.'}`}
             </div>
           )}
           
@@ -168,10 +223,14 @@ const Contact = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                onBlur={handleBlur}
+                className={`w-full px-4 py-3 rounded-md border ${fieldErrors.name ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-700'} bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]`}
                 placeholder="Your name"
                 required
               />
+              {fieldErrors.name && (
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1">{fieldErrors.name}</p>
+              )}
             </div>
             
             <div className="space-y-2">
@@ -184,10 +243,14 @@ const Contact = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                onBlur={handleBlur}
+                className={`w-full px-4 py-3 rounded-md border ${fieldErrors.email ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-700'} bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]`}
                 placeholder="Your email"
                 required
               />
+              {fieldErrors.email && (
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1">{fieldErrors.email}</p>
+              )}
             </div>
             
             <div className="space-y-2">
@@ -214,7 +277,8 @@ const Contact = () => {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                onBlur={handleBlur}
+                className={`w-full px-4 py-3 rounded-md border ${fieldErrors.subject ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-700'} bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]`}
                 required
               >
                 <option value="">Select a subject</option>
@@ -224,6 +288,9 @@ const Contact = () => {
                 <option value="security">Security Systems</option>
                 <option value="other">Other</option>
               </select>
+              {fieldErrors.subject && (
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1">{fieldErrors.subject}</p>
+              )}
             </div>
             
             <div className="space-y-2 md:col-span-2">
@@ -236,10 +303,14 @@ const Contact = () => {
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                onBlur={handleBlur}
+                className={`w-full px-4 py-3 rounded-md border ${fieldErrors.message ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-gray-700'} bg-white dark:bg-[var(--gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]`}
                 placeholder="Tell us about your project"
                 required
               ></textarea>
+              {fieldErrors.message && (
+                <p className="text-red-500 dark:text-red-400 text-sm mt-1">{fieldErrors.message}</p>
+              )}
             </div>
             
             <div className="md:col-span-2 flex justify-center">
@@ -250,6 +321,17 @@ const Contact = () => {
                 onClick={(e) => {
                   // Additional click handler as a backup
                   if (!status.submitting) {
+                    // Validate form before submission
+                    if (!validateForm()) {
+                      e.preventDefault();
+                      setStatus({
+                        ...status,
+                        submitted: true,
+                        success: false,
+                        error: 'Please fill in all required fields correctly'
+                      });
+                      return;
+                    }
                     handleSubmit(e);
                   }
                 }}
