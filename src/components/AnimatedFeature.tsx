@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+// DrawSVGPlugin is used indirectly via the drawSVG property in GSAP animations
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { gsap, ScrollTrigger, DrawSVGPlugin } from '../utils/gsapPlugins';
 
 const AnimatedFeature = () => {

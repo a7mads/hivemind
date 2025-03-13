@@ -12,12 +12,21 @@ interface DrawSVGPluginData {
   length: number;
 }
 
+interface DrawSVGValue {
+  start?: number;
+  end?: number;
+}
+
+interface DrawSVGPluginInstance {
+  data: DrawSVGPluginData;
+}
+
 // Create a simple DrawSVGPlugin implementation
 const DrawSVGPlugin = {
   name: "drawSVG",
   
   // Initialize the plugin
-  init(target: SVGPathElement | SVGElement, value: any): boolean {
+  init(target: SVGPathElement | SVGElement, value: DrawSVGValue | string | number): boolean {
     // Check if it's an SVG element with getBBox method
     if (!('getBBox' in target)) {
       return false;
@@ -31,7 +40,7 @@ const DrawSVGPlugin = {
     // Parse the value (e.g., "0% 100%", "0 100", etc.)
     let start: number, end: number;
     
-    if (typeof value === "object") {
+    if (typeof value === "object" && value !== null) {
       start = value.start || 0;
       end = value.end || 100;
     } else if (typeof value === "string" && value.indexOf("%") !== -1) {
@@ -60,14 +69,14 @@ const DrawSVGPlugin = {
     target.style.strokeDashoffset = `${length - start}`;
     
     // Store the data for use in the render function
-    (this as any).data = data;
+    (this as unknown as DrawSVGPluginInstance).data = data;
     
     return true;
   },
   
   // Render the animation at each frame
-  render(ratio: number, plugin: any): void {
-    const data = plugin.data as DrawSVGPluginData;
+  render(ratio: number, plugin: DrawSVGPluginInstance): void {
+    const data = plugin.data;
     const target = data.target;
     const length = data.length;
     const start = data.start + (data.end - data.start) * ratio;
@@ -79,4 +88,4 @@ const DrawSVGPlugin = {
 // Register the plugin with GSAP
 gsap.registerPlugin(DrawSVGPlugin);
 
-export { DrawSVGPlugin }; 
+export { DrawSVGPlugin };
