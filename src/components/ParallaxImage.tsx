@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { gsap } from '../utils/gsapPlugins';
 
 interface ParallaxImageProps {
@@ -11,6 +12,8 @@ interface ParallaxImageProps {
   direction?: 'up' | 'down' | 'left' | 'right';
   scale?: number;
   containerClassName?: string;
+  width?: number;
+  height?: number;
 }
 
 const ParallaxImage: React.FC<ParallaxImageProps> = ({
@@ -21,9 +24,11 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({
   direction = 'up',
   scale = 1.2,
   containerClassName = '',
+  width = 1920,
+  height = 1080,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current || !imageRef.current) return;
@@ -77,12 +82,16 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({
 
   return (
     <div ref={containerRef} className={`overflow-hidden relative ${containerClassName}`}>
-      <img
-        ref={imageRef}
-        src={src}
-        alt={alt}
-        className={`w-full h-full object-cover ${className}`}
-      />
+      <div ref={imageRef} className="w-full h-full">
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          className={`w-full h-full object-cover ${className}`}
+          priority
+        />
+      </div>
     </div>
   );
 };

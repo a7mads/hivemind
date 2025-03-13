@@ -18,10 +18,14 @@ class CustomSplitText {
   private originalHTML: string;
   public chars: HTMLElement[] = [];
   public words: HTMLElement[] = [];
+  public lines: HTMLElement[] = [];
+  public elements: HTMLElement[] = [];
+  public selector: string = '';
   
   constructor(element: HTMLElement, options: { type: string }) {
     this.element = element;
     this.originalHTML = element.innerHTML;
+    this.selector = '';
     
     if (options.type.includes('words')) {
       this.splitWords();
@@ -30,6 +34,13 @@ class CustomSplitText {
     if (options.type.includes('chars')) {
       this.splitChars();
     }
+    
+    if (options.type.includes('lines')) {
+      this.splitLines();
+    }
+    
+    // Populate elements array with all split elements
+    this.elements = [...this.chars, ...this.words, ...this.lines];
   }
 
   private splitWords() {
@@ -76,18 +87,63 @@ class CustomSplitText {
     // Store references to character elements
     this.chars = Array.from(this.element.querySelectorAll('.split-char'));
   }
+  
+  private splitLines() {
+    // Simple line splitting based on <br> tags
+    // This is a simplified version and won't work exactly like the real SplitText
+    const html = this.element.innerHTML;
+    const lines = html.split('<br>');
+    
+    let newHtml = '';
+    lines.forEach(line => {
+      newHtml += `<span class="split-line">${line}</span><br>`;
+    });
+    
+    this.element.innerHTML = newHtml;
+    
+    // Store references to line elements
+    this.lines = Array.from(this.element.querySelectorAll('.split-line'));
+  }
+
+  public split(newType?: string) {
+    // Method to re-split with a new type if needed
+    this.revert();
+    
+    if (newType) {
+      if (newType.includes('words')) {
+        this.splitWords();
+      }
+      
+      if (newType.includes('chars')) {
+        this.splitChars();
+      }
+      
+      if (newType.includes('lines')) {
+        this.splitLines();
+      }
+    }
+    
+    // Update elements array
+    this.elements = [...this.chars, ...this.words, ...this.lines];
+    
+    return this;
+  }
 
   public revert() {
     // Restore original HTML
     this.element.innerHTML = this.originalHTML;
     this.chars = [];
     this.words = [];
+    this.lines = [];
+    this.elements = [];
+    return this;
   }
 }
 
 // Custom DrawSVG implementation (simplified version)
 const CustomDrawSVGPlugin = {
   name: "drawSVG",
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   init(target: SVGElement, vars: Record<string, unknown>) {
     // Check if it's an SVG path element
     if (!target || target.tagName !== 'path') return false;

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import { gsap, ScrollTrigger, SplitText } from '../utils/gsapPlugins';
+import { gsap, ScrollTrigger, SplitText as CustomSplitText } from '../utils/gsapPlugins';
 
 interface TextRevealProps {
   children: React.ReactNode;
@@ -31,14 +31,14 @@ const TextReveal: React.FC<TextRevealProps> = ({
   x = 0,
 }) => {
   const textRef = useRef<HTMLDivElement>(null);
-  const splitTextRef = useRef<SplitText | null>(null);
+  const splitTextRef = useRef<InstanceType<typeof CustomSplitText> | null>(null);
   const hasAnimated = useRef<boolean>(false);
 
   useEffect(() => {
     if (!textRef.current) return;
 
     // Create SplitText instance
-    splitTextRef.current = new SplitText(textRef.current, { type });
+    splitTextRef.current = new CustomSplitText(textRef.current, { type });
     
     // Get the elements to animate based on type
     let elements: HTMLElement[] = [];
@@ -46,6 +46,8 @@ const TextReveal: React.FC<TextRevealProps> = ({
       elements = splitTextRef.current.chars;
     } else if (type.includes('words')) {
       elements = splitTextRef.current.words;
+    } else if (type.includes('lines')) {
+      elements = splitTextRef.current.lines;
     }
 
     // Set initial state

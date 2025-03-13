@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { gsap } from '../utils/gsapPlugins';
 
 interface SmoothScrollProps {
@@ -14,6 +14,27 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
   const currentY = useRef<number>(0);
   const targetY = useRef<number>(0);
   const scrollTween = useRef<gsap.core.Tween | null>(null);
+  const resizeObserver = useRef<ResizeObserver | null>(null);
+
+  // Store the current scrollContainer element in a ref to avoid cleanup issues
+  const scrollContainerElement = useRef<HTMLDivElement | null>(null);
+
+  // Callback ref to store the element reference safely
+  const setScrollContainerRef = useCallback((node: HTMLDivElement | null) => {
+    // Store the node in our ref
+    scrollContainer.current = node;
+    scrollContainerElement.current = node;
+    
+    // If we had an observer and an old node, disconnect it
+    if (resizeObserver.current && !node) {
+      resizeObserver.current.disconnect();
+    }
+    
+    // If we have a new node, observe it
+    if (node && resizeObserver.current) {
+      resizeObserver.current.observe(node);
+    }
+  }, []);
 
   useEffect(() => {
     // Skip smooth scrolling on mobile devices
@@ -23,14 +44,14 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
     }
 
     // Set initial height
-    if (scrollContainer.current && viewportRef.current) {
-      document.body.style.height = `${scrollContainer.current.offsetHeight}px`;
+    if (scrollContainerElement.current && viewportRef.current) {
+      document.body.style.height = `${scrollContainerElement.current.offsetHeight}px`;
     }
 
     // Handle resize
     const handleResize = () => {
-      if (scrollContainer.current) {
-        document.body.style.height = `${scrollContainer.current.offsetHeight}px`;
+      if (scrollContainerElement.current) {
+        document.body.style.height = `${scrollContainerElement.current.offsetHeight}px`;
       }
     };
 
@@ -51,17 +72,17 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
         ease: "power3.out",
         overwrite: true,
         onUpdate: () => {
-          if (scrollContainer.current) {
-            scrollContainer.current.style.transform = `translateY(${-currentY.current}px)`;
+          if (scrollContainerElement.current) {
+            scrollContainerElement.current.style.transform = `translateY(${-currentY.current}px)`;
           }
         }
       });
     };
 
     // Set up ResizeObserver to detect content changes
-    const resizeObserver = new ResizeObserver(handleResize);
-    if (scrollContainer.current) {
-      resizeObserver.observe(scrollContainer.current);
+    resizeObserver.current = new ResizeObserver(handleResize);
+    if (scrollContainerElement.current) {
+      resizeObserver.current.observe(scrollContainerElement.current);
     }
 
     // Add event listeners
@@ -76,19 +97,23 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
       // Clean up
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', updateScroll);
-      if (scrollContainer.current) {
-        resizeObserver.unobserve(scrollContainer.current);
+      
+      // Use the stored reference for cleanup
+      if (resizeObserver.current) {
+        resizeObserver.current.disconnect();
       }
+      
       if (scrollTween.current) {
         scrollTween.current.kill();
       }
+      
       document.body.style.height = '';
     };
   }, []);
 
   return (
     <div ref={viewportRef} className="viewport fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-      <div ref={scrollContainer} className="scroll-container will-change-transform pointer-events-auto">
+      <div ref={setScrollContainerRef} className="scroll-container will-change-transform pointer-events-auto">
         {children}
       </div>
     </div>
