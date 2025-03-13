@@ -10,7 +10,9 @@ import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import PageTransition from '../components/PageTransition';
-import CustomCursor from '../components/CustomCursor';
+// import CustomCursor from '../components/CustomCursor';
+// import CursorTest from '../components/CursorTest';
+import ReactCursor from '../components/ReactCursor';
 
 // ScrollToTop component to handle scrolling to top on page refresh
 const ScrollToTop = () => {
@@ -28,7 +30,9 @@ export default function Home() {
     <main>
       <ScrollToTop />
       <PageTransition />
-      <CustomCursor />
+      {/* <CustomCursor /> */}
+      {/* <CursorTest /> */}
+      <ReactCursor />
       <Navbar />
       <Hero />
       <About />

@@ -8,17 +8,39 @@ const CustomCursor = () => {
   const followerRef = useRef<HTMLDivElement | null>(null);
   
   useEffect(() => {
-    // Only run on client side
-    if (typeof window === 'undefined') return;
+    // Only run on client side and check if we're in a browser environment
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+    
+    // Check if we're on a touch device (no cursor needed)
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+    
+    console.log("CustomCursor component mounted");
     
     // Create cursor elements
     const cursor = document.createElement('div');
-    cursor.className = 'fixed w-4 h-4 rounded-full bg-[var(--accent)] z-[9999] pointer-events-none mix-blend-difference';
+    cursor.id = 'custom-cursor';
+    cursor.style.position = 'fixed';
+    cursor.style.width = '12px';
+    cursor.style.height = '12px';
+    cursor.style.borderRadius = '50%';
+    cursor.style.backgroundColor = '#00f5d4'; // Using the accent color directly
+    cursor.style.zIndex = '9999';
+    cursor.style.pointerEvents = 'none';
+    cursor.style.mixBlendMode = 'difference';
     cursor.style.transform = 'translate(-50%, -50%)';
     document.body.appendChild(cursor);
     
     const follower = document.createElement('div');
-    follower.className = 'fixed w-10 h-10 rounded-full border-2 border-[var(--accent)] z-[9998] pointer-events-none mix-blend-difference';
+    follower.id = 'cursor-follower';
+    follower.style.position = 'fixed';
+    follower.style.width = '30px';
+    follower.style.height = '30px';
+    follower.style.borderRadius = '50%';
+    follower.style.border = '2px solid #00f5d4'; // Using the accent color directly
+    follower.style.zIndex = '9998';
+    follower.style.pointerEvents = 'none';
+    follower.style.mixBlendMode = 'difference';
     follower.style.transform = 'translate(-50%, -50%)';
     document.body.appendChild(follower);
     
@@ -31,6 +53,8 @@ const CustomCursor = () => {
     
     // Mouse move event
     const onMouseMove = (e: MouseEvent) => {
+      console.log("Mouse moved", e.clientX, e.clientY);
+      
       // Animate cursor to mouse position
       gsap.to(cursor, {
         x: e.clientX,
