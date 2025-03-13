@@ -1,5 +1,8 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { gsap, ScrollTrigger } from '../utils/gsapPlugins';
 
 const services = [
   {
@@ -29,19 +32,99 @@ const services = [
 ];
 
 const Services = () => {
+  // Create refs for elements we want to animate
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // GSAP animations
+  useEffect(() => {
+    // Reset the cards ref array
+    cardsRef.current = [];
+
+    // Title and subtitle animations
+    gsap.fromTo(
+      titleRef.current,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+
+    gsap.fromTo(
+      subtitleRef.current,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+
+    // Service cards staggered animation
+    gsap.fromTo(
+      cardsRef.current,
+      { 
+        y: 50, 
+        opacity: 0,
+        scale: 0.9
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "back.out(1.2)",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+
+    // Clean up animations on component unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  // Add to cards ref array
+  const addToCardsRef = (el: HTMLDivElement | null, index: number) => {
+    if (el) {
+      cardsRef.current[index] = el;
+    }
+  };
+
   return (
-    <section id="services" className="section">
+    <section id="services" className="section" ref={sectionRef}>
       <div className="container">
-        <h2 className="section-title">Our Services</h2>
-        <p className="section-subtitle">
+        <h2 className="section-title" ref={titleRef}>Our Services</h2>
+        <p className="section-subtitle" ref={subtitleRef}>
           Comprehensive smart home solutions tailored to your needs
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div 
               key={service.id} 
               className="bg-white dark:bg-[var(--gray-light)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              ref={(el) => addToCardsRef(el, index)}
             >
               <div className="flex justify-center mb-4">
                 <div className="w-16 h-16 flex items-center justify-center rounded-full bg-[var(--primary)] bg-opacity-10">

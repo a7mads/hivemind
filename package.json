@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
+    "gsap": "^3.12.7",
     "next": "15.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

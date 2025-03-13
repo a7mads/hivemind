@@ -9,6 +9,8 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import PageTransition from '../components/PageTransition';
+import CustomCursor from '../components/CustomCursor';
 
 // ScrollToTop component to handle scrolling to top on page refresh
 const ScrollToTop = () => {
@@ -25,6 +27,8 @@ export default function Home() {
   return (
     <main>
       <ScrollToTop />
+      <PageTransition />
+      <CustomCursor />
       <Navbar />
       <Hero />
       <About />
