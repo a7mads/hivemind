@@ -12,6 +12,10 @@ module.exports = {
         secondary: 'var(--secondary)',
         accent: 'var(--accent)',
       },
+      fontFamily: {
+        poppins: ['var(--font-poppins)'],
+        montserrat: ['var(--font-montserrat)'],
+      },
     },
   },
   plugins: [],

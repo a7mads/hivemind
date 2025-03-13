@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0a2463" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 20v.01" class="wifi-dot"></path>
+  <path d="M8 16.5a5 5 0 0 1 8 0" class="wifi-wave-1"></path>
+  <path d="M5 12.5a10 10 0 0 1 14 0" class="wifi-wave-2"></path>
+  <path d="M2 8.5a15 15 0 0 1 20 0" class="wifi-wave-3"></path>
+  <rect x="9" y="2" width="6" height="3" rx="1" class="device-top"></rect>
+  <path d="M10 5v3M14 5v3" class="device-connectors"></path>
+</svg> 

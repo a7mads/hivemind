@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0a2463" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M9 18h6" class="bulb-base"></path>
+  <path d="M12 2v3" class="bulb-top"></path>
+  <path d="M12 22v-1" class="bulb-bottom"></path>
+  <path d="M15 5.65a7 7 0 1 0-6 0" class="bulb-body"></path>
+  <path d="M9.5 14.5L9 18M14.5 14.5L15 18" class="bulb-connectors"></path>
+  <path d="M8.5 8.5l-1-1M15.5 8.5l1-1M12 6.5V8" class="rays"></path>
+  <path d="M10 12h4" class="filament"></path>
+</svg> 
