@@ -272,7 +272,7 @@ const AnimatedTimeline = () => {
                   </div>
                   <div className={`${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <div className="text-lg font-semibold text-[var(--primary)]">{item.year}</div>
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-[var(--primary-dark)]">{item.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
                   </div>
                 </div>
