@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       {
         url: '/favicon.ico',
         sizes: '32x32',
-        type: 'image/ico',
+        type: 'image/x-icon',
       },
       {
         url: '/Artboard 1HivemindBlack@4x-trans.png',

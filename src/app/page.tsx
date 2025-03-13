@@ -37,17 +37,46 @@ const ScrollToTop = () => {
     if (isMobile) {
       document.body.classList.add('is-mobile');
     }
+
+    // Log GSAP version and availability
+    console.log('GSAP version:', gsap.version);
+    console.log('GSAP registered:', gsap);
+
+    // Add error handler
+    const originalError = console.error;
+    console.error = (...args) => {
+      console.log('ERROR DETECTED:', ...args);
+      originalError.apply(console, args);
+    };
+
+    return () => {
+      // Restore original console.error
+      console.error = originalError;
+    };
   }, []);
 
   return null; // This component doesn't render anything
 };
 
 export default function Home() {
+  useEffect(() => {
+    console.log('Home component mounted');
+    
+    try {
+      // Test GSAP
+      const testAnimation = gsap.to({}, { duration: 1 });
+      console.log('GSAP animation created successfully:', testAnimation);
+      testAnimation.kill();
+    } catch (error) {
+      console.error('Error creating GSAP animation:', error);
+    }
+  }, []);
+
   return (
     <main>
       <ScrollToTop />
       <PageTransition />
-      <ScrollProgress color="var(--accent)" height={3} />
+      <ScrollProgress color="#2e7d32" height={3} />
       
       {/* Use SmoothScroll for desktop only */}
       <SmoothScroll>

@@ -11,8 +11,8 @@ interface ScrollProgressProps {
 }
 
 const ScrollProgress: React.FC<ScrollProgressProps> = ({
-  color = '#ffffff',
-  height = 4,
+  color = "#2e7d32",
+  height = 3,
   position = 'top',
   zIndex = 50,
 }) => {

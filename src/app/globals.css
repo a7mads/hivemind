@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --primary: #0a2463;
-  --secondary: #3e92cc;
-  --accent: #00f5d4;
+  --primary: #1a1a1a;
+  --secondary: #2e7d32;
+  --accent: #4caf50;
   --background: #ffffff;
   --foreground: #1a1a1a;
   --gray-light: #f5f5f5;
@@ -14,11 +14,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #1e3a8a;
-    --secondary: #3e92cc;
-    --accent: #00f5d4;
-    --background: #0a0a0a;
-    --foreground: #f5f5f5;
+    --primary: #2e7d32;
+    --secondary: #1a1a1a;
+    --accent: #4caf50;
+    --background: #121212;
+    --foreground: #ffffff;
     --gray-light: #1a1a1a;
     --gray: #2a2a2a;
   }
@@ -42,7 +42,15 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .btn-primary {
-    @apply bg-[var(--primary)] text-white py-3 px-6 rounded-md font-medium hover:opacity-90 transition-opacity;
+    @apply bg-hivemind-green text-white py-3 px-6 rounded-md font-medium hover:bg-hivemind-green-dark transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-hivemind-black text-white py-3 px-6 rounded-md font-medium hover:opacity-90 transition-opacity;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-hivemind-green text-hivemind-green py-3 px-6 rounded-md font-medium hover:bg-hivemind-green hover:text-white transition-colors;
   }
   
   .section {

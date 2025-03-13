@@ -115,70 +115,73 @@ const Navbar = () => {
   return (
     <header 
       ref={navbarRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white dark:bg-[var(--gray-light)] shadow-md py-3' 
+          ? 'bg-white dark:bg-hivemind-black shadow-md py-3' 
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="container flex justify-between items-center">
-        <Link href="/" className="flex items-center" ref={logoRef}>
-          <div className={`relative transition-all duration-300 ${
-            isScrolled ? 'h-20' : 'h-24'
-          }`} ref={logoImageRef}>
+      <div className="container mx-auto flex justify-between items-center">
+        <Link href="/" className="relative z-10" ref={logoRef}>
+          <div ref={logoImageRef} className="relative h-12 w-48">
             <Image 
               src="/Artboard 1HivemindBlack@4x-trans.png" 
               alt="Hivemind Logo" 
-              width={550} 
-              height={120} 
-              className={`transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-100'}`}
-              style={{ objectFit: 'contain', height: '100%', width: 'auto' }}
-              priority
+              fill
+              style={{ objectFit: 'contain' }}
+              className={isScrolled ? 'opacity-100' : 'opacity-100 filter brightness-0 invert'}
             />
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-8 items-center">
           <Link 
             href="#about" 
-            className={`${isScrolled ? 'text-[var(--foreground)]' : 'text-white'} hover:text-[var(--accent)] transition-colors`}
+            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
             ref={createRefCallback(0)}
           >
             About
           </Link>
           <Link 
             href="#services" 
-            className={`${isScrolled ? 'text-[var(--foreground)]' : 'text-white'} hover:text-[var(--accent)] transition-colors`}
+            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
             ref={createRefCallback(1)}
           >
             Services
           </Link>
           <Link 
             href="#why-choose-us" 
-            className={`${isScrolled ? 'text-[var(--foreground)]' : 'text-white'} hover:text-[var(--accent)] transition-colors`}
+            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
             ref={createRefCallback(2)}
           >
             Why Choose Us
           </Link>
           <Link 
             href="#testimonials" 
-            className={`${isScrolled ? 'text-[var(--foreground)]' : 'text-white'} hover:text-[var(--accent)] transition-colors`}
+            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
             ref={createRefCallback(3)}
           >
             Testimonials
           </Link>
           <Link 
             href="/animations" 
-            className={`${isScrolled ? 'text-[var(--foreground)]' : 'text-white'} hover:text-[var(--accent)] transition-colors`}
+            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
             ref={createRefCallback(4)}
           >
             Animations
           </Link>
           <Link 
-            href="#contact" 
-            className="btn-primary text-sm py-2 px-4"
+            href="/scrolltrigger" 
+            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
             ref={createRefCallback(5)}
+          >
+            ScrollTrigger
+          </Link>
+          <Link 
+            href="#contact" 
+            className="bg-hivemind-green hover:bg-hivemind-green-dark text-white py-3 px-6 rounded-md font-medium transition-colors"
+            ref={createRefCallback(6)}
           >
             Contact Us
           </Link>
@@ -186,10 +189,10 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-[var(--primary)] dark:text-white"
+          className="md:hidden text-hivemind-black dark:text-white"
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
-          ref={createRefCallback(6)}
+          ref={createRefCallback(7)}
         >
           {isMobileMenuOpen ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,48 +208,57 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div 
-        ref={mobileMenuRef} 
-        className={`md:hidden bg-white dark:bg-[var(--gray-light)] shadow-md overflow-hidden ${!isMobileMenuOpen ? 'h-0 opacity-0' : ''}`}
+        ref={mobileMenuRef}
+        className={`fixed inset-0 bg-hivemind-black bg-opacity-95 z-50 transform transition-transform duration-300 ${
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
         <div className="container py-4 space-y-4">
           <Link 
             href="#about" 
-            className="block text-[var(--foreground)] hover:text-[var(--primary)]"
+            className="block text-hivemind-black hover:text-hivemind-green"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             About
           </Link>
           <Link 
             href="#services" 
-            className="block text-[var(--foreground)] hover:text-[var(--primary)]"
+            className="block text-hivemind-black hover:text-hivemind-green"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Services
           </Link>
           <Link 
             href="#why-choose-us" 
-            className="block text-[var(--foreground)] hover:text-[var(--primary)]"
+            className="block text-hivemind-black hover:text-hivemind-green"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Why Choose Us
           </Link>
           <Link 
             href="#testimonials" 
-            className="block text-[var(--foreground)] hover:text-[var(--primary)]"
+            className="block text-hivemind-black hover:text-hivemind-green"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Testimonials
           </Link>
           <Link 
             href="/animations" 
-            className="block text-[var(--foreground)] hover:text-[var(--primary)]"
+            className="block text-hivemind-black hover:text-hivemind-green"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Animations
           </Link>
           <Link 
+            href="/scrolltrigger" 
+            className="block text-hivemind-black hover:text-hivemind-green"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            ScrollTrigger
+          </Link>
+          <Link 
             href="#contact" 
-            className="block text-[var(--foreground)] hover:text-[var(--primary)]"
+            className="block text-hivemind-black hover:text-hivemind-green"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Contact Us

@@ -106,10 +106,13 @@ const Hero = () => {
         />
       </div>
       
+      {/* Dark overlay to enhance text readability */}
+      <div className="absolute inset-0 bg-black opacity-50 z-5"></div>
+      
       {/* Overlay for initial animation (similar to daylightcomputer.com) */}
       <div 
         ref={overlayRef} 
-        className="absolute inset-0 bg-black z-20"
+        className="absolute inset-0 bg-hivemind-black z-20"
       ></div>
       
       {/* Content */}
@@ -126,18 +129,19 @@ const Hero = () => {
           <button 
             ref={buttonRef}
             onClick={scrollToContact}
-            className="btn-primary bg-[var(--accent)] text-[var(--primary)] hover:bg-white transition-colors duration-300"
+            className="bg-hivemind-green hover:bg-hivemind-green-dark text-white py-3 px-8 rounded-md font-medium transition-colors duration-300"
           >
-            Get a Free Consultation
+            Get Started
           </button>
         </div>
       </div>
       
-      {/* Scroll indicator (similar to daylightcomputer.com) */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center">
-        <span className="text-white text-sm mb-2">Scroll Down</span>
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-white rounded-full animate-scroll-down mt-2"></div>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="animate-scroll-down">
+          <svg className="w-8 h-8 text-hivemind-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </div>
       </div>
     </section>
