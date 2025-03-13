@@ -136,12 +136,14 @@ const Navbar = () => {
     >
       <div className="container flex justify-between items-center">
         <Link href="/" className="flex items-center" ref={logoRef}>
-          <div className="h-10 w-auto relative" ref={logoImageRef}>
+          <div className={`relative transition-all duration-300 ${
+            isScrolled ? 'h-14' : 'h-16'
+          }`} ref={logoImageRef}>
             <Image 
               src="/Artboard 1HivemindBlack@4x-trans.png" 
               alt="Hivemind Logo" 
-              width={140} 
-              height={40} 
+              width={220} 
+              height={60} 
               className={`transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-100'}`}
               style={{ objectFit: 'contain', height: '100%', width: 'auto' }}
               priority
