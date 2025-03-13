@@ -78,7 +78,7 @@ const AnimatedFeature = () => {
       "-=0.4"
     );
 
-    // Circle animation - always use the fallback animation
+    // Circle animation using standard SVG properties
     if (circleRef.current) {
       // Set initial state
       const circumference = 2 * Math.PI * 80; // 2πr where r=80

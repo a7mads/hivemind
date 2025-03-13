@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { gsap } from '../utils/gsapPlugins';
 
 // You can easily switch between these background images by changing the imagePath variable
@@ -102,16 +101,10 @@ const Hero = () => {
     <section className="relative h-screen flex items-center z-10" ref={sectionRef}>
       {/* Background image with parallax effect */}
       <div ref={backgroundRef} className="absolute inset-0 z-0">
-        <Image
+        <img
           src={imagePath}
           alt="Smart home"
-          fill
-          priority
-          sizes="100vw"
-          style={{
-            objectFit: 'cover',
-            filter: 'brightness(0.7)'
-          }}
+          className="w-full h-full object-cover brightness-[0.7]"
         />
       </div>
       
