@@ -22,6 +22,11 @@ if (typeof window !== 'undefined') {
   }
 }
 
+// Define a type for SplitText config
+interface SplitTextConfig {
+  type?: 'chars' | 'words' | 'lines' | 'both';
+}
+
 // Custom SplitText class for text animations
 class SplitText {
   elements: HTMLElement[];
@@ -29,7 +34,7 @@ class SplitText {
   words: HTMLElement[];
   lines: HTMLElement[];
   
-  constructor(target: string | HTMLElement | NodeList | HTMLElement[], config: any = {}) {
+  constructor(target: string | HTMLElement | NodeList | HTMLElement[], config: SplitTextConfig = {}) {
     this.elements = [];
     this.chars = [];
     this.words = [];
@@ -107,7 +112,7 @@ class SplitText {
 }
 
 // Try to dynamically import DrawSVGPlugin if available
-let DrawSVGPlugin: DrawSVGPluginType = MockDrawSVGPlugin;
+const DrawSVGPlugin: DrawSVGPluginType = MockDrawSVGPlugin;
 
 // Export the plugins
 export { gsap, ScrollTrigger, DrawSVGPlugin, SplitText }; 

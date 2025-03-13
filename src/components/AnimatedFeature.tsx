@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import { gsap, ScrollTrigger, DrawSVGPlugin } from '../utils/gsapPlugins';
+import { gsap, ScrollTrigger } from '../utils/gsapPlugins';
 
 const AnimatedFeature = () => {
   // Create refs for elements we want to animate
