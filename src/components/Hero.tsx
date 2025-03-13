@@ -98,7 +98,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center" ref={sectionRef}>
+    <section className="relative h-screen flex items-center z-10" ref={sectionRef}>
       {/* Background image with parallax effect */}
       <div ref={backgroundRef} className="absolute inset-0 z-0">
         <img

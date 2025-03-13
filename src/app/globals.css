@@ -28,6 +28,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
 }
 
 @layer components {
@@ -40,14 +41,32 @@ body {
   }
   
   .section {
-    @apply py-16 md:py-24;
+    @apply py-16 md:py-24 relative;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Ensure About section is always on top */
+  #about {
+    position: relative;
+    z-index: 20;
   }
   
   .section-title {
     @apply text-3xl md:text-4xl font-bold mb-6 text-center;
+    position: relative;
+    z-index: 5;
   }
   
   .section-subtitle {
     @apply text-lg md:text-xl text-center max-w-3xl mx-auto mb-12 text-gray-600 dark:text-gray-300;
+    position: relative;
+    z-index: 5;
+  }
+  
+  /* Ensure text animations are always visible */
+  .split-char, .split-word {
+    position: relative;
+    z-index: 10;
   }
 }
