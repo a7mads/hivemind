@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -7,7 +8,16 @@ const Footer = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Hivemind</h3>
+            <div className="mb-4">
+              <Image 
+                src="/Artboard 1HivemindBlack@4x-trans.png" 
+                alt="Hivemind Logo" 
+                width={160} 
+                height={45} 
+                className="mb-4"
+                style={{ objectFit: 'contain', height: '45px', width: 'auto' }}
+              />
+            </div>
             <p className="mb-4 max-w-md">
               Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.
             </p>

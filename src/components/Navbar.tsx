@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef, RefCallback } from 'react';
 import Link from 'next/link';
-import { gsap } from 'gsap';
+import Image from 'next/image';
+import { gsap } from '../utils/gsapPlugins';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,6 +12,7 @@ const Navbar = () => {
   // Create refs for elements we want to animate
   const navbarRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
+  const logoImageRef = useRef<HTMLDivElement | null>(null);
   const navItemsRef = useRef<(HTMLElement | null)[]>([]);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -62,7 +64,7 @@ const Navbar = () => {
 
     // Logo animation
     gsap.fromTo(
-      logoRef.current,
+      logoImageRef.current,
       { x: -20, opacity: 0 },
       { x: 0, opacity: 1, duration: 0.6, ease: "back.out(1.7)", delay: 0.5 }
     );
@@ -133,8 +135,18 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-[var(--primary)]" ref={logoRef}>
-          Hivemind
+        <Link href="/" className="flex items-center" ref={logoRef}>
+          <div className="h-10 w-auto relative" ref={logoImageRef}>
+            <Image 
+              src="/Artboard 1HivemindBlack@4x-trans.png" 
+              alt="Hivemind Logo" 
+              width={140} 
+              height={40} 
+              className={`transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-100'}`}
+              style={{ objectFit: 'contain', height: '100%', width: 'auto' }}
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}

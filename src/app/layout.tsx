@@ -13,10 +13,22 @@ export const metadata: Metadata = {
   description: "Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.",
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon.svg', type: 'image/svg+xml' }
+      {
+        url: '/favicon.ico',
+        sizes: '32x32',
+        type: 'image/ico',
+      },
+      {
+        url: '/Artboard 1HivemindBlack@4x-trans.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
     ],
-    apple: { url: '/favicon.svg', type: 'image/svg+xml' }
+    apple: {
+      url: '/Artboard 1HivemindBlack@4x-trans.png',
+      sizes: '180x180',
+      type: 'image/png',
+    },
   }
 };
 
