@@ -8,14 +8,14 @@ const Footer = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <div className="mb-6">
+            <div className="mb-8">
               <Image 
                 src="/Artboard 1HivemindBlack@4x-trans.png" 
                 alt="Hivemind Logo" 
-                width={240} 
-                height={70} 
-                className="mb-4"
-                style={{ objectFit: 'contain', height: '70px', width: 'auto' }}
+                width={550} 
+                height={120} 
+                className="mb-6"
+                style={{ objectFit: 'contain', height: '120px', width: 'auto' }}
               />
             </div>
             <p className="mb-4 max-w-md">
