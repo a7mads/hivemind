@@ -10,6 +10,10 @@ import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import PageTransition from '../components/PageTransition';
+// Animated components
+import AnimatedFeature from '../components/AnimatedFeature';
+import AnimatedCounter from '../components/AnimatedCounter';
+import AnimatedTimeline from '../components/AnimatedTimeline';
 // Custom cursor components removed
 
 // ScrollToTop component to handle scrolling to top on page refresh
@@ -32,7 +36,10 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
+      <AnimatedFeature />
+      <AnimatedCounter />
       <WhyChooseUs />
+      <AnimatedTimeline />
       <Testimonials />
       <Contact />
       <Footer />
