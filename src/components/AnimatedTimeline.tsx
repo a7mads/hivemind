@@ -75,81 +75,159 @@ const AnimatedTimeline = () => {
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
   const timelineRef = useRef<HTMLDivElement | null>(null);
   const lineRef = useRef<HTMLDivElement | null>(null);
+  const timelineItemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const timelineDotRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const timelineContentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // GSAP animations
   useEffect(() => {
-    // Basic animations that are less likely to cause issues
-    try {
-      // Title animation
+    // Reset refs arrays
+    timelineItemRefs.current = [];
+    timelineDotRefs.current = [];
+    timelineContentRefs.current = [];
+
+    // Title animation
+    gsap.fromTo(
+      titleRef.current,
+      { 
+        opacity: 0,
+        y: 30
+      },
+      { 
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+
+    // Subtitle animation
+    gsap.fromTo(
+      subtitleRef.current,
+      { 
+        opacity: 0,
+        y: 20
+      },
+      { 
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+
+    // Timeline line animation - progressive growth with scroll
+    if (lineRef.current) {
       gsap.fromTo(
-        titleRef.current,
+        lineRef.current,
         { 
-          opacity: 0,
-          y: 30
+          scaleY: 0,
+          transformOrigin: "top center"
         },
         { 
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
+          scaleY: 1,
+          duration: 1.5,
+          ease: "power2.inOut",
           scrollTrigger: {
-            trigger: sectionRef.current,
+            trigger: timelineRef.current,
             start: "top 80%",
-            toggleActions: "play none none none"
+            end: "bottom 20%",
+            scrub: 0.5, // Smooth scrubbing effect tied to scroll position
           }
         }
       );
+    }
 
-      // Subtitle animation
-      gsap.fromTo(
-        subtitleRef.current,
-        { 
-          opacity: 0,
-          y: 20
-        },
-        { 
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: 0.2,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none"
-          }
+    // Animate each timeline item as it comes into view
+    timelineItemRefs.current.forEach((item, index) => {
+      if (!item) return;
+
+      // Create a timeline for each item
+      const itemTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 75%",
+          end: "center 60%",
+          toggleActions: "play none none reverse",
+          scrub: 0.2, // Smooth scrubbing effect tied to scroll position
         }
-      );
+      });
 
-      // Timeline line animation - simple version
-      if (lineRef.current) {
-        gsap.fromTo(
-          lineRef.current,
-          { 
-            scaleY: 0
+      // Dot animation
+      if (timelineDotRefs.current[index]) {
+        itemTl.fromTo(
+          timelineDotRefs.current[index],
+          {
+            scale: 0,
+            opacity: 0
           },
-          { 
-            scaleY: 1,
-            duration: 1.5,
-            ease: "power2.inOut",
-            scrollTrigger: {
-              trigger: timelineRef.current,
-              start: "top 70%"
-            }
-          }
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            ease: "back.out(1.7)"
+          },
+          0
         );
       }
-    } catch (error) {
-      console.error("Error in AnimatedTimeline animations:", error);
-    }
+
+      // Content animation - different for left and right sides
+      if (timelineContentRefs.current[index]) {
+        const isEven = index % 2 === 0;
+        itemTl.fromTo(
+          timelineContentRefs.current[index],
+          {
+            opacity: 0,
+            x: isEven ? 50 : -50,
+            y: 20,
+            rotation: isEven ? 2 : -2
+          },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            rotation: 0,
+            duration: 0.6,
+            ease: "power2.out"
+          },
+          0.2
+        );
+      }
+    });
 
     // Clean up animations on component unmount
     return () => {
-      try {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      } catch (error) {
-        console.error("Error cleaning up ScrollTrigger:", error);
-      }
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
+
+  // Add to refs arrays
+  const addToTimelineItemRef = (el: HTMLDivElement | null, index: number) => {
+    if (el) {
+      timelineItemRefs.current[index] = el;
+    }
+  };
+
+  const addToTimelineDotRef = (el: HTMLDivElement | null, index: number) => {
+    if (el) {
+      timelineDotRefs.current[index] = el;
+    }
+  };
+
+  const addToTimelineContentRef = (el: HTMLDivElement | null, index: number) => {
+    if (el) {
+      timelineContentRefs.current[index] = el;
+    }
+  };
 
   return (
     <section id="process" className="section" ref={sectionRef}>
@@ -171,11 +249,13 @@ const AnimatedTimeline = () => {
             <div 
               key={item.id}
               className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+              ref={(el) => addToTimelineItemRef(el, index)}
             >
               {/* Timeline dot */}
               <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
                 <div 
                   className="w-6 h-6 rounded-full bg-[var(--primary)] border-4 border-white shadow-md"
+                  ref={(el) => addToTimelineDotRef(el, index)}
                 ></div>
               </div>
               
@@ -183,6 +263,7 @@ const AnimatedTimeline = () => {
               <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                 <div 
                   className="bg-white p-6 rounded-lg shadow-md"
+                  ref={(el) => addToTimelineContentRef(el, index)}
                 >
                   <div className="flex items-center mb-2 text-[var(--accent)]">
                     <div className={`${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
@@ -192,7 +273,7 @@ const AnimatedTimeline = () => {
                   <div className={`${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <div className="text-lg font-semibold text-[var(--primary)]">{item.year}</div>
                     <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
                   </div>
                 </div>
               </div>

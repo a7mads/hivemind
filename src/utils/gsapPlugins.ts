@@ -1,14 +1,15 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 
 // Only register plugins on the client side
 if (typeof window !== 'undefined') {
   try {
-    // Register ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
-    console.log('ScrollTrigger registered successfully');
+    // Register ScrollTrigger and DrawSVGPlugin
+    gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+    console.log('GSAP plugins registered successfully');
   } catch (e) {
-    console.warn('Failed to register ScrollTrigger:', e);
+    console.warn('Failed to register GSAP plugins:', e);
   }
 }
 
@@ -86,4 +87,4 @@ export class SplitText {
 }
 
 // Export GSAP and plugins
-export { gsap, ScrollTrigger }; 
+export { gsap, ScrollTrigger, DrawSVGPlugin }; 

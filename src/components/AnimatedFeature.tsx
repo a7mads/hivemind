@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import { gsap, ScrollTrigger } from '../utils/gsapPlugins';
+import { gsap, ScrollTrigger, DrawSVGPlugin } from '../utils/gsapPlugins';
 
 const AnimatedFeature = () => {
   // Create refs for elements we want to animate
@@ -78,23 +78,40 @@ const AnimatedFeature = () => {
       "-=0.4"
     );
 
-    // Circle animation using standard SVG properties
+    // Circle animation using DrawSVGPlugin
     if (circleRef.current) {
-      // Set initial state
-      const circumference = 2 * Math.PI * 80; // 2πr where r=80
-      circleRef.current.style.strokeDasharray = `${circumference}`;
-      circleRef.current.style.strokeDashoffset = `${circumference}`;
-      
-      // Animate
-      masterTl.to(
-        circleRef.current,
-        { 
-          strokeDashoffset: 0,
-          duration: 1.5,
-          ease: "power2.inOut"
-        },
-        "-=0.8"
-      );
+      try {
+        // Use DrawSVGPlugin for the circle animation
+        masterTl.fromTo(
+          circleRef.current,
+          { 
+            drawSVG: "0%" 
+          },
+          { 
+            drawSVG: "100%",
+            duration: 1.5,
+            ease: "power2.inOut"
+          },
+          "-=0.8"
+        );
+      } catch (error) {
+        console.warn("DrawSVGPlugin error:", error);
+        
+        // Fallback animation using standard SVG properties
+        const circumference = 2 * Math.PI * 80; // 2πr where r=80
+        circleRef.current.style.strokeDasharray = `${circumference}`;
+        circleRef.current.style.strokeDashoffset = `${circumference}`;
+        
+        masterTl.to(
+          circleRef.current,
+          { 
+            strokeDashoffset: 0,
+            duration: 1.5,
+            ease: "power2.inOut"
+          },
+          "-=0.8"
+        );
+      }
     }
 
     // Icon animations
