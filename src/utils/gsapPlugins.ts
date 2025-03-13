@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
+import { DrawSVGPlugin } from './DrawSVGPlugin';
 
 // Only register plugins on the client side
 if (typeof window !== 'undefined') {
