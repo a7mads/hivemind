@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef } from 'react';
 import { gsap } from '../utils/gsapPlugins';
+import TextReveal from './TextReveal';
+import ParallaxImage from './ParallaxImage';
 
 // You can easily switch between these background images by changing the imagePath variable
 // hero-bg.jpg: Modern smart home with tablet control
@@ -21,6 +23,7 @@ const Hero = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const backgroundRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
 
   // Function to scroll to the contact section when the button is clicked
   const scrollToContact = () => {
@@ -35,30 +38,23 @@ const Hero = () => {
     // Create a timeline for sequenced animations
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     
+    // Overlay animation (similar to daylightcomputer.com)
+    tl.fromTo(overlayRef.current, 
+      { scaleY: 1, transformOrigin: 'bottom' }, 
+      { scaleY: 0, duration: 1.2, ease: "power4.inOut" }
+    );
+    
     // Background image fade in
     tl.fromTo(backgroundRef.current, 
       { opacity: 0, scale: 1.1 }, 
-      { opacity: 1, scale: 1, duration: 1.5 }
-    );
-    
-    // Heading animation
-    tl.fromTo(headingRef.current, 
-      { y: 50, opacity: 0 }, 
-      { y: 0, opacity: 1, duration: 0.8 }, 
-      "-=0.8" // Start slightly before the previous animation ends
-    );
-    
-    // Paragraph animation
-    tl.fromTo(paragraphRef.current, 
-      { y: 30, opacity: 0 }, 
-      { y: 0, opacity: 1, duration: 0.8 }, 
-      "-=0.6"
+      { opacity: 1, scale: 1, duration: 1.5 },
+      "-=0.8" // Start before the overlay animation ends
     );
     
     // Button animation
     tl.fromTo(buttonRef.current, 
       { y: 20, opacity: 0 }, 
-      { y: 0, opacity: 1, duration: 0.6 }, 
+      { y: 0, opacity: 1, duration: 0.6 },
       "-=0.4"
     );
 
@@ -101,22 +97,34 @@ const Hero = () => {
     <section className="relative h-screen flex items-center z-10" ref={sectionRef}>
       {/* Background image with parallax effect */}
       <div ref={backgroundRef} className="absolute inset-0 z-0">
-        <img
+        <ParallaxImage 
           src={imagePath}
           alt="Smart home"
-          className="w-full h-full object-cover brightness-[0.7]"
+          speed={0.2}
+          direction="up"
+          scale={1.2}
+          containerClassName="w-full h-full"
+          className="brightness-[0.7]"
         />
       </div>
+      
+      {/* Overlay for initial animation (similar to daylightcomputer.com) */}
+      <div 
+        ref={overlayRef} 
+        className="absolute inset-0 bg-black z-20"
+      ></div>
       
       {/* Content */}
       <div className="container relative z-10 text-white">
         <div className="max-w-3xl">
-          <h1 ref={headingRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <TextReveal className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" type="words,chars" staggerTime={0.02}>
             Seamless Smart Home Automation & Security
-          </h1>
-          <p ref={paragraphRef} className="text-xl md:text-2xl mb-8">
+          </TextReveal>
+          
+          <TextReveal className="text-xl md:text-2xl mb-8" type="words" staggerTime={0.05} delay={0.5}>
             Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.
-          </p>
+          </TextReveal>
+          
           <button 
             ref={buttonRef}
             onClick={scrollToContact}
@@ -124,6 +132,14 @@ const Hero = () => {
           >
             Get a Free Consultation
           </button>
+        </div>
+      </div>
+      
+      {/* Scroll indicator (similar to daylightcomputer.com) */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center">
+        <span className="text-white text-sm mb-2">Scroll Down</span>
+        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-white rounded-full animate-scroll-down mt-2"></div>
         </div>
       </div>
     </section>

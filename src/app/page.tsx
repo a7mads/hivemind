@@ -14,7 +14,11 @@ import PageTransition from '../components/PageTransition';
 import AnimatedFeature from '../components/AnimatedFeature';
 import AnimatedCounter from '../components/AnimatedCounter';
 import AnimatedTimeline from '../components/AnimatedTimeline';
-// Custom cursor components removed
+// New animation components
+import SmoothScroll from '../components/SmoothScroll';
+import ScrollSection from '../components/ScrollSection';
+import ScrollProgress from '../components/ScrollProgress';
+import { gsap } from '../utils/gsapPlugins';
 
 // ScrollToTop component to handle scrolling to top on page refresh
 const ScrollToTop = () => {
@@ -22,6 +26,17 @@ const ScrollToTop = () => {
     // Scroll to top on page load/refresh
     window.history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
+    
+    // Set up GSAP defaults
+    gsap.config({
+      nullTargetWarn: false,
+    });
+    
+    // Disable smooth scrolling on mobile
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      document.body.classList.add('is-mobile');
+    }
   }, []);
 
   return null; // This component doesn't render anything
@@ -32,17 +47,58 @@ export default function Home() {
     <main>
       <ScrollToTop />
       <PageTransition />
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <AnimatedFeature />
-      <AnimatedCounter />
-      <WhyChooseUs />
-      <AnimatedTimeline />
-      <Testimonials />
-      <Contact />
-      <Footer />
+      <ScrollProgress color="var(--accent)" height={3} />
+      
+      {/* Use SmoothScroll for desktop only */}
+      <SmoothScroll>
+        <Navbar />
+        
+        {/* Hero section */}
+        <Hero />
+        
+        {/* About section with scroll animations */}
+        <ScrollSection fadeIn slideUp stagger>
+          <About />
+        </ScrollSection>
+        
+        {/* Services section with scroll animations */}
+        <ScrollSection fadeIn slideUp delay={0.2}>
+          <Services />
+        </ScrollSection>
+        
+        {/* Animated Feature section with scroll animations */}
+        <ScrollSection fadeIn slideUp>
+          <AnimatedFeature />
+        </ScrollSection>
+        
+        {/* Animated Counter section with scroll animations */}
+        <ScrollSection fadeIn slideUp>
+          <AnimatedCounter />
+        </ScrollSection>
+        
+        {/* Why Choose Us section with scroll animations */}
+        <ScrollSection fadeIn slideUp stagger>
+          <WhyChooseUs />
+        </ScrollSection>
+        
+        {/* Animated Timeline section with scroll animations */}
+        <ScrollSection fadeIn slideUp>
+          <AnimatedTimeline />
+        </ScrollSection>
+        
+        {/* Testimonials section with scroll animations */}
+        <ScrollSection fadeIn slideUp stagger>
+          <Testimonials />
+        </ScrollSection>
+        
+        {/* Contact section with scroll animations */}
+        <ScrollSection fadeIn slideUp>
+          <Contact />
+        </ScrollSection>
+        
+        {/* Footer */}
+        <Footer />
+      </SmoothScroll>
     </main>
   );
 }

@@ -73,4 +73,48 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     z-index: 10;
   }
+  
+  /* Scroll down animation */
+  @keyframes scroll-down {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(8px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+  
+  .animate-scroll-down {
+    animation: scroll-down 1.5s infinite;
+  }
+  
+  /* Smooth scrolling for desktop */
+  html:not(.is-mobile) {
+    scroll-behavior: smooth;
+  }
+  
+  /* Styles for horizontal scroll sections */
+  .horizontal-scroll {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .horizontal-container > * {
+    flex-shrink: 0;
+  }
+}
+
+/* Disable smooth scrolling for mobile devices */
+.is-mobile .viewport {
+  position: relative !important;
+}
+
+.is-mobile .scroll-container {
+  transform: none !important;
 }

@@ -169,9 +169,16 @@ const Navbar = () => {
             Testimonials
           </Link>
           <Link 
+            href="/animations" 
+            className={`${isScrolled ? 'text-[var(--foreground)]' : 'text-white'} hover:text-[var(--accent)] transition-colors`}
+            ref={createRefCallback(4)}
+          >
+            Animations
+          </Link>
+          <Link 
             href="#contact" 
             className="btn-primary text-sm py-2 px-4"
-            ref={createRefCallback(4)}
+            ref={createRefCallback(5)}
           >
             Contact Us
           </Link>
@@ -182,7 +189,7 @@ const Navbar = () => {
           className="md:hidden text-[var(--primary)] dark:text-white"
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
-          ref={createRefCallback(5)}
+          ref={createRefCallback(6)}
         >
           {isMobileMenuOpen ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,6 +236,13 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Testimonials
+          </Link>
+          <Link 
+            href="/animations" 
+            className="block text-[var(--foreground)] hover:text-[var(--primary)]"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Animations
           </Link>
           <Link 
             href="#contact" 
