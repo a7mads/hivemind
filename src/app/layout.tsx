@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins, Montserrat } from "next/font/google";
+import { Rajdhani } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
+const rajdhani = Rajdhani({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-  display: "swap",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-montserrat",
+  variable: "--font-rajdhani",
   display: "swap",
 });
 
@@ -47,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${montserrat.variable} antialiased`}>
+      <body className={`${rajdhani.variable} antialiased`}>
         {children}
       </body>
     </html>

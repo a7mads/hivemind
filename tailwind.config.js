@@ -13,8 +13,7 @@ module.exports = {
         accent: 'var(--accent)',
       },
       fontFamily: {
-        poppins: ['var(--font-poppins)'],
-        montserrat: ['var(--font-montserrat)'],
+        rajdhani: ['var(--font-rajdhani)'],
       },
     },
   },
