@@ -118,12 +118,12 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 text-white">
         <div className="max-w-3xl">
-          <TextReveal className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" type="words,chars" staggerTime={0.02}>
-            Seamless Smart Home Automation & Security
+          <TextReveal className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" type="words,chars" staggerTime={0.02}>
+            Seamless Smart Home Automation & Security – Powered by Emirati Innovation
           </TextReveal>
           
-          <TextReveal className="text-xl md:text-2xl mb-8" type="words" staggerTime={0.05} delay={0.5}>
-            Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.
+          <TextReveal className="text-lg md:text-xl mb-8" type="words" staggerTime={0.05} delay={0.5}>
+            Advanced technology designed in the UAE to make your home safer, smarter, and more efficient—effortlessly.
           </TextReveal>
           
           <button 
