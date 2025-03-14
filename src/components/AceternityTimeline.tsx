@@ -184,8 +184,8 @@ export const Timeline = ({ data = timelineData }: { data?: TimelineEntry[] }) =>
       >
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-1/4 left-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 left-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl"></div>
         </div>
         
         <div className="max-w-7xl mx-auto py-4 px-4 md:px-8 lg:px-10 relative z-10 text-center">
@@ -230,7 +230,7 @@ export const Timeline = ({ data = timelineData }: { data?: TimelineEntry[] }) =>
                     }}
                   >
                     <motion.div 
-                      className={`h-5 w-5 rounded-full bg-gradient-to-br from-purple-500 via-blue-500 to-teal-400 border border-neutral-100 dark:border-neutral-700`}
+                      className={`h-5 w-5 rounded-full bg-gradient-to-br from-green-500 via-emerald-400 to-gray-200 border border-neutral-100 dark:border-neutral-700`}
                       animate={{ 
                         scale: activeIndex === index || visibleSections.includes(index) ? 1.3 : 1,
                         transition: { duration: 0.3 }
@@ -238,7 +238,7 @@ export const Timeline = ({ data = timelineData }: { data?: TimelineEntry[] }) =>
                     />
                   </motion.div>
                   <motion.h3 
-                    className="hidden md:block text-xl md:pl-20 md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-blue-500 to-teal-400"
+                    className="hidden md:block text-xl md:pl-20 md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-gray-400"
                     animate={{ 
                       x: activeIndex === index ? 10 : 0,
                       transition: { duration: 0.3 }
@@ -250,7 +250,7 @@ export const Timeline = ({ data = timelineData }: { data?: TimelineEntry[] }) =>
       
                 <div className="relative pl-20 pr-4 md:pl-4 w-full">
                   <motion.h3 
-                    className="md:hidden block text-2xl mb-3 text-left font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-blue-500 to-teal-400"
+                    className="md:hidden block text-2xl mb-3 text-left font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-gray-400"
                     animate={{ 
                       x: activeIndex === index ? 5 : 0,
                       transition: { duration: 0.3 }
@@ -286,7 +286,7 @@ export const Timeline = ({ data = timelineData }: { data?: TimelineEntry[] }) =>
                 height: heightTransform,
                 opacity: opacityTransform,
               }}
-              className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-teal-400 from-[0%] via-[50%] rounded-full"
+              className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-green-600 via-emerald-400 to-gray-300 from-[0%] via-[50%] rounded-full"
             />
           </div>
         </div>
