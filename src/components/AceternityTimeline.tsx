@@ -8,7 +8,6 @@ import {
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { cn } from "../utils/utils";
 
 interface TimelineEntry {
   title: string;

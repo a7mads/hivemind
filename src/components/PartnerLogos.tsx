@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 const partnerLogos = [
   "/logos/logo1.svg", "/logos/logo2.svg", "/logos/logo3.svg", "/logos/logo4.svg", 
@@ -23,7 +24,12 @@ const PartnerLogos = () => {
               {duplicatedLogos.map((logo, index) => (
                 <li key={`logo1-${index}`}>
                   <div className="logo-item">
-                    <img src={logo} alt={`Partner ${index % partnerLogos.length + 1}`} />
+                    <Image 
+                      src={logo} 
+                      alt={`Partner ${index % partnerLogos.length + 1}`} 
+                      width={150}
+                      height={60}
+                    />
                   </div>
                 </li>
               ))}
@@ -38,7 +44,12 @@ const PartnerLogos = () => {
               {duplicatedLogos.map((logo, index) => (
                 <li key={`logo2-${index}`}>
                   <div className="logo-item">
-                    <img src={logo} alt={`Partner ${index % partnerLogos.length + 1}`} />
+                    <Image 
+                      src={logo} 
+                      alt={`Partner ${index % partnerLogos.length + 1}`} 
+                      width={150}
+                      height={60}
+                    />
                   </div>
                 </li>
               ))}
