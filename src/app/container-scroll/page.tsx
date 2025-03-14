@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { ContainerScroll } from "@/components/ContainerScroll";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function ContainerScrollDemo() {
