@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import Link from 'next/link';
 
 export default function BasicPage() {
   useEffect(() => {
@@ -24,11 +25,11 @@ export default function BasicPage() {
           <div className="bg-blue-100 p-6 rounded-lg shadow">
             <h2 className="text-xl font-bold mb-4">Test Links</h2>
             <ul className="space-y-2">
-              <li><a href="/" className="text-blue-600 hover:underline">Home</a></li>
-              <li><a href="/simple" className="text-blue-600 hover:underline">Simple Page</a></li>
-              <li><a href="/gsap-test" className="text-blue-600 hover:underline">GSAP Test</a></li>
-              <li><a href="/animations" className="text-blue-600 hover:underline">Animations</a></li>
-              <li><a href="/scrolltrigger" className="text-blue-600 hover:underline">ScrollTrigger</a></li>
+              <li><Link href="/" className="text-blue-600 hover:underline">Home</Link></li>
+              <li><Link href="/simple" className="text-blue-600 hover:underline">Simple Page</Link></li>
+              <li><Link href="/gsap-test" className="text-blue-600 hover:underline">GSAP Test</Link></li>
+              <li><Link href="/animations" className="text-blue-600 hover:underline">Animations</Link></li>
+              <li><Link href="/scrolltrigger" className="text-blue-600 hover:underline">ScrollTrigger</Link></li>
             </ul>
           </div>
           
