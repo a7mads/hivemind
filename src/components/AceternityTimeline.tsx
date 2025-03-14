@@ -27,7 +27,7 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop"
+            src="/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png"
             alt="Consultation & Planning in an elegant minimalist interior" 
             fill
             className="object-cover transition-all duration-500 hover:scale-105"
@@ -35,7 +35,7 @@ const timelineData: TimelineEntry[] = [
         </div>
       </div>
     ),
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop"
+    image: "/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png"
   },
   {
     title: "Week 1",
@@ -67,7 +67,7 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=2070&auto=format&fit=crop"
+            src="/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png"
             alt="Installation & Setup" 
             fill
             className="object-cover transition-all duration-500 hover:scale-105"
@@ -75,7 +75,7 @@ const timelineData: TimelineEntry[] = [
         </div>
       </div>
     ),
-    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=2070&auto=format&fit=crop"
+    image: "/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png"
   },
   {
     title: "Week 3",
@@ -87,7 +87,7 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=2070&auto=format&fit=crop"
+            src="/images/timeline/Modern Minimalist Home Office Workspace Virtual Background.png"
             alt="Testing & Training" 
             fill
             className="object-cover transition-all duration-500 hover:scale-105"
@@ -95,7 +95,7 @@ const timelineData: TimelineEntry[] = [
         </div>
       </div>
     ),
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=2070&auto=format&fit=crop"
+    image: "/images/timeline/Modern Minimalist Home Office Workspace Virtual Background.png"
   },
   {
     title: "Ongoing",
