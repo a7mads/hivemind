@@ -20,16 +20,16 @@ const LightbulbAnimation: React.FC<LightbulbAnimationProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [animationData, setAnimationData] = useState<any>(null);
 
-  // Load the animation data
+  // Load the animation data from LottieLab CDN
   useEffect(() => {
-    // Fetch the JSON file directly
-    fetch('/lottie/lightbulb.json')
+    // Fetch the JSON file from LottieLab CDN
+    fetch('https://cdn.lottielab.com/l/9TJNK95KDLzKsb.json')
       .then(response => response.json())
       .then(data => {
         setAnimationData(data);
       })
       .catch(error => {
-        console.error("Failed to load lightbulb animation:", error);
+        console.error("Failed to load lightbulb animation from LottieLab:", error);
       });
   }, []);
 

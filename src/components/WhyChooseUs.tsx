@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import LightbulbAnimation from './LightbulbAnimation';
+// import LightbulbAnimationIframe from './LightbulbAnimationIframe';
 
 const features = [
   {
