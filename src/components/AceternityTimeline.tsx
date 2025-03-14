@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import CloudinaryImage from "./CloudinaryImage";
 
 interface TimelineEntry {
   title: string;
@@ -26,18 +27,15 @@ const timelineData: TimelineEntry[] = [
           We assess your needs, discuss options, and create a customized smart home plan.
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
-          <Image 
-            src={`/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png`}
+          <CloudinaryImage 
+            src="https://res.cloudinary.com/demo/image/upload/elegant_interior.jpg"
             alt="Consultation & Planning in an elegant minimalist interior" 
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-all duration-500 hover:scale-105"
+            className="transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
     ),
-    image: `/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png`
+    image: "https://res.cloudinary.com/demo/image/upload/elegant_interior.jpg"
   },
   {
     title: "Week 1",
@@ -48,13 +46,10 @@ const timelineData: TimelineEntry[] = [
           Our engineers design your system architecture and prepare all necessary equipment.
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
-          <Image 
+          <CloudinaryImage 
             src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
             alt="System Design & Preparation" 
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-all duration-500 hover:scale-105"
+            className="transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
@@ -70,18 +65,15 @@ const timelineData: TimelineEntry[] = [
           Our expert technicians install all hardware and configure your system for optimal performance.
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
-          <Image 
-            src={`/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png`}
+          <CloudinaryImage 
+            src="https://res.cloudinary.com/demo/image/upload/table_lamp.jpg"
             alt="Installation & Setup" 
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-all duration-500 hover:scale-105"
+            className="transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
     ),
-    image: `/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png`
+    image: "https://res.cloudinary.com/demo/image/upload/table_lamp.jpg"
   },
   {
     title: "Week 3",
@@ -92,18 +84,15 @@ const timelineData: TimelineEntry[] = [
           We thoroughly test all systems and provide comprehensive training on how to use your new smart home.
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
-          <Image 
-            src={`/images/timeline/Modern Minimalist Home Office Workspace Virtual Background.png`}
+          <CloudinaryImage 
+            src="https://res.cloudinary.com/demo/image/upload/office_workspace.jpg"
             alt="Testing & Training" 
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-all duration-500 hover:scale-105"
+            className="transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
     ),
-    image: `/images/timeline/Modern Minimalist Home Office Workspace Virtual Background.png`
+    image: "https://res.cloudinary.com/demo/image/upload/office_workspace.jpg"
   },
   {
     title: "Ongoing",
@@ -114,13 +103,10 @@ const timelineData: TimelineEntry[] = [
           We provide ongoing support, maintenance, and updates to ensure your system runs smoothly.
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
-          <Image 
+          <CloudinaryImage 
             src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop"
             alt="Support & Maintenance" 
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-all duration-500 hover:scale-105"
+            className="transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
