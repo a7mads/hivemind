@@ -30,8 +30,6 @@ const timelineData: TimelineEntry[] = [
             src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop"
             alt="Consultation & Planning in an elegant minimalist interior" 
             fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
@@ -52,8 +50,6 @@ const timelineData: TimelineEntry[] = [
             src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
             alt="System Design & Preparation" 
             fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
@@ -71,17 +67,15 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=2070&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1563770660941-10a63607692e?q=80&w=2070&auto=format&fit=crop"
             alt="Installation & Setup" 
             fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
     ),
-    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=2070&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1563770660941-10a63607692e?q=80&w=2070&auto=format&fit=crop"
   },
   {
     title: "Week 3",
@@ -96,8 +90,6 @@ const timelineData: TimelineEntry[] = [
             src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=2070&auto=format&fit=crop"
             alt="Testing & Training" 
             fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
@@ -118,8 +110,6 @@ const timelineData: TimelineEntry[] = [
             src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop"
             alt="Support & Maintenance" 
             fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
