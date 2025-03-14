@@ -1,0 +1,5 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M25 15L35 30L25 45L15 30L25 15Z" fill="#FF9500"/>
+  <path d="M20 25H30V35H20V25Z" fill="white"/>
+  <text x="50" y="35" font-family="Arial" font-size="14" font-weight="bold" fill="#FF9500">Apple HomeKit</text>
+</svg> 

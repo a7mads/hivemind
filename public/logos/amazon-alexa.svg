@@ -1,0 +1,5 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="25" cy="30" r="15" fill="#00CAFF"/>
+  <path d="M20 30L25 35L30 30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <text x="50" y="35" font-family="Arial" font-size="16" font-weight="bold" fill="#00CAFF">Amazon Alexa</text>
+</svg> 

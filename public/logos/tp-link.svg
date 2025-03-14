@@ -1,0 +1,5 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M15 20H35V40H15V20Z" fill="#4ACBD6"/>
+  <path d="M20 25L30 35M20 35L30 25" stroke="white" stroke-width="2"/>
+  <text x="45" y="35" font-family="Arial" font-size="16" font-weight="bold" fill="#4ACBD6">TP-Link</text>
+</svg> 

@@ -1,0 +1,5 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="15" width="30" height="30" rx="5" fill="#1A365D"/>
+  <path d="M25 15L40 30L25 45L10 30L25 15Z" fill="#3182CE"/>
+  <text x="50" y="35" font-family="Arial" font-size="16" font-weight="bold" fill="#1A365D">Control4</text>
+</svg> 
