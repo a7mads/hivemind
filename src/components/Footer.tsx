@@ -26,7 +26,7 @@ const Footer = () => {
                   height={24} 
                   className="mr-2"
                 />
-                <span className="text-white font-medium">Proudly Emirati-Owned & Operated 🇦🇪</span>
+                <span className="text-white font-medium">Proudly Emirati-Owned & Operated</span>
               </div>
             </div>
             <p className="mb-4 max-w-md">
