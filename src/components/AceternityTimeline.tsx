@@ -1,4 +1,5 @@
 "use client";
+// Feature branch: Enhanced Aceternity UI Timeline Component
 import {
   useScroll,
   useTransform,
