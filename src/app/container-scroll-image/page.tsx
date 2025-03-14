@@ -24,7 +24,7 @@ export default function ContainerScrollImageDemo() {
           <div className="relative w-full h-full flex items-center justify-center">
             <div className="w-full h-full relative overflow-hidden rounded-lg">
               <Image 
-                src="https://community-assets.home-assistant.io/optimized/4X/a/8/8/a886ed39c8a7c326dbf02061150a07a00849bb1f_2_1380x842.jpeg"
+                src="https://community-assets.home-assistant.io/optimized/4X/e/f/a/efa4e05f68ccecc65b10d4a7621c42a39a627c21_2_1380x864.jpeg"
                 alt="Home Assistant Dashboard"
                 fill
                 priority
