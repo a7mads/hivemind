@@ -27,16 +27,15 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png"
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop"
             alt="Consultation & Planning in an elegant minimalist interior" 
-            width={800}
-            height={400}
+            fill
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
     ),
-    image: "/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png"
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop"
   },
   {
     title: "Week 1",
