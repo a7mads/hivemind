@@ -28,6 +28,12 @@ const features = [
     description: 'Automation that optimizes energy use.',
     icon: '/icons/energy.svg',
   },
+  {
+    id: 5,
+    title: 'Local Expertise, Trusted by UAE Homes & Businesses',
+    description: 'As a UAE-based company led by Emirati engineers, we bring a deep understanding of local infrastructure, security regulations, and environmental factors, ensuring tailored smart home solutions designed for homes and businesses in the region.',
+    icon: '/icons/uae-flag.svg',
+  },
 ];
 
 const WhyChooseUs = () => {
