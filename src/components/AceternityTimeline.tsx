@@ -29,7 +29,8 @@ const timelineData: TimelineEntry[] = [
           <Image 
             src="/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png"
             alt="Consultation & Planning in an elegant minimalist interior" 
-            fill
+            width={800}
+            height={400}
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>

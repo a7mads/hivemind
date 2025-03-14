@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    domains: ['images.unsplash.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -9,6 +10,7 @@ const nextConfig = {
         pathname: '**',
       },
     ],
+    unoptimized: process.env.NODE_ENV === 'production',
   },
 };
 
