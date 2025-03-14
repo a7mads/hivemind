@@ -128,79 +128,98 @@ h1, h2, h3, h4, h5, h6 {
   transform: none !important;
 }
 
-/* Logo scrolling animation styles */
+/* Logo Scrolling Animation */
 .logo-scroll-container {
   width: 100%;
   overflow: hidden;
-  padding: 1rem 0;
   position: relative;
+  padding: 2rem 0;
 }
 
 .logo-scroll {
+  position: relative;
+  overflow: hidden;
+  user-select: none;
   display: flex;
-  align-items: center;
-  width: fit-content;
+  gap: 2rem;
 }
 
-.logo-scroll-left {
-  animation: scroll-left 30s linear infinite;
+.logo-scroll-content {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+  justify-content: space-around;
+  min-width: 100%;
+  list-style: none;
+  gap: 2rem;
+  animation: scroll 25s linear infinite;
 }
 
-.logo-scroll-right {
-  animation: scroll-right 30s linear infinite;
+.logo-scroll-reverse .logo-scroll-content {
+  animation-direction: reverse;
+}
+
+.logo-scroll-content li {
+  padding: 0;
+  margin: 0;
 }
 
 .logo-item {
-  flex-shrink: 0;
-  height: 4rem;
-  width: 8rem;
-  margin: 0 1.5rem;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 80px;
   filter: grayscale(100%);
-  opacity: 0.7;
+  opacity: 0.6;
   transition: all 0.3s ease;
 }
 
 .logo-item:hover {
   filter: grayscale(0%);
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-.logo-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.logo-image {
+.logo-item img {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
-/* Fallback animations for brand scrolling */
-@keyframes scroll-left {
+@keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% - 2rem));
   }
 }
 
-@keyframes scroll-right {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
+@media (prefers-reduced-motion: reduce) {
+  .logo-scroll-content {
+    animation-play-state: paused !important;
   }
 }
 
-/* CSS classes for fallback animations */
-.animate-scroll-left {
-  animation: scroll-left 30s linear infinite !important;
-}
-
-.animate-scroll-right {
-  animation: scroll-right 30s linear infinite !important;
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .logo-item {
+    width: 120px;
+    height: 60px;
+  }
+  
+  .logo-scroll-content {
+    gap: 1.5rem;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% - 1.5rem));
+    }
+  }
 }
