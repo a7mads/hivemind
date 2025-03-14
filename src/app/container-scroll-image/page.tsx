@@ -15,7 +15,7 @@ export default function ContainerScrollImageDemo() {
       
       <ContainerScrollImage
         titleComponent={
-          <h1 className="text-4xl font-bold text-white mb-10">
+          <h1 className="text-4xl font-bold text-white mb-6">
             Scroll down to see the <span className="text-blue-500">Home Assistant</span> dashboard
           </h1>
         }
