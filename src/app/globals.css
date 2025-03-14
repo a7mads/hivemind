@@ -146,3 +146,12 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(0);
   }
 }
+
+/* CSS classes for fallback animations */
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite !important;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite !important;
+}

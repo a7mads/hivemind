@@ -34,12 +34,22 @@ if (typeof window !== 'undefined') {
     
     // Register the custom DrawSVG plugin
     gsap.registerPlugin(CustomDrawSVGPlugin);
-    console.log('GSAP registered:', gsap);
+    
+    // Ensure GSAP is properly initialized
+    gsap.defaults({
+      overwrite: 'auto',
+      ease: 'power2.inOut'
+    });
+    
+    // Force GSAP to update its internal ticker
+    gsap.ticker.wake();
+    
+    console.log('GSAP registered and initialized:', gsap);
   } catch (e) {
     console.error('Failed to register GSAP plugins:', e);
   }
 } else {
-  console.log('gsapPlugins.ts: Not on client side, skipping plugin registration');
+  console.log('Not on client side, skipping plugin registration');
 }
 
 // Custom SplitText implementation (simplified version of GSAP's premium SplitText)
