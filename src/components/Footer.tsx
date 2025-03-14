@@ -18,6 +18,16 @@ const Footer = () => {
                 className="mb-6 filter brightness-0 invert"
                 style={{ objectFit: 'contain', height: '120px', width: 'auto' }}
               />
+              <div className="flex items-center mt-2 bg-white bg-opacity-10 p-2 rounded-md inline-block">
+                <Image 
+                  src="/icons/uae-flag.svg" 
+                  alt="UAE Flag" 
+                  width={24} 
+                  height={24} 
+                  className="mr-2"
+                />
+                <span className="text-white font-medium">Proudly Emirati-Owned & Operated 🇦🇪</span>
+              </div>
             </div>
             <p className="mb-4 max-w-md">
               Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.

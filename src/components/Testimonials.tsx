@@ -19,6 +19,12 @@ const testimonials = [
     quote: 'The security system gives me peace of mind, especially when I\'m traveling for work.',
     role: 'Business Executive',
   },
+  {
+    id: 4,
+    name: 'Ahmed R.',
+    quote: 'As a UAE homeowner, I wanted a smart home system that understands my needs—Hivemind delivered a perfect, secure, and seamless solution!',
+    role: 'Dubai',
+  },
 ];
 
 const Testimonials = () => {
