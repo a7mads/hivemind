@@ -25,7 +25,7 @@ export default function ContainerScrollImageDemo() {
           alt="Home Assistant Dashboard"
           fill
           priority
-          className="object-cover rounded-[20px]"
+          className="object-contain"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
         />
       </ContainerScrollImage>

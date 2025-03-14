@@ -27,7 +27,7 @@ export const ContainerScrollImage = ({
   }, []);
 
   const scaleDimensions = () => {
-    return isMobile ? [0.7, 0.9] : [1.05, 1];
+    return isMobile ? [0.7, 0.85] : [1.0, 0.95];
   };
 
   const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
@@ -47,7 +47,9 @@ export const ContainerScrollImage = ({
       >
         <Header translate={translate} titleComponent={titleComponent} />
         <CardImage rotate={rotate} scale={scale}>
-          {children}
+          <div className="relative w-full h-full overflow-hidden rounded-[20px]">
+            {children}
+          </div>
         </CardImage>
       </div>
     </div>
