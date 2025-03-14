@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap, ScrollTrigger, SplitText } from '../utils/gsapPlugins';
 import { card3DHoverEffect } from '../utils/gsapAnimations';
-import LightbulbAnimation from './LightbulbAnimation';
 
 const services = [
   {
@@ -313,10 +312,9 @@ const Services = () => {
     <section id="services" className="section py-20 md:py-32" ref={sectionRef}>
       <div className="container">
         <div className="flex items-center justify-center mb-6">
-          <h2 className="section-title font-montserrat text-4xl md:text-5xl font-bold text-center overflow-hidden mr-4" ref={titleRef}>
+          <h2 className="section-title font-montserrat text-4xl md:text-5xl font-bold text-center overflow-hidden" ref={titleRef}>
             Our Services
           </h2>
-          <LightbulbAnimation width={60} height={60} className="hidden md:block" />
         </div>
         <p className="section-subtitle font-poppins text-lg md:text-xl text-center max-w-3xl mx-auto mb-16 text-gray-600 dark:text-gray-300" ref={subtitleRef}>
           Comprehensive smart home solutions tailored to your needs

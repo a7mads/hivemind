@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import LightbulbAnimation from './LightbulbAnimation';
+// import LightbulbAnimation from './LightbulbAnimation';
 // import LightbulbAnimationIframe from './LightbulbAnimationIframe';
 
 const features = [
@@ -35,8 +35,7 @@ const WhyChooseUs = () => {
     <section id="why-choose-us" className="section bg-[var(--primary)] text-white">
       <div className="container">
         <div className="flex items-center justify-center mb-6">
-          <h2 className="section-title text-white mr-4">Why Choose Us?</h2>
-          <LightbulbAnimation width={60} height={60} className="hidden md:block" />
+          <h2 className="section-title text-white">Why Choose Us?</h2>
         </div>
         <p className="section-subtitle text-white opacity-90">
           We deliver excellence in every aspect of smart home technology
