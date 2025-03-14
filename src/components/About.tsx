@@ -109,11 +109,8 @@ const About = () => {
       <div className="container relative">
         <h2 className="section-title relative z-20" ref={titleRef}>About Hivemind</h2>
         <div className="max-w-4xl mx-auto text-center relative z-20">
-          <p className="text-lg md:text-xl relative mb-4" ref={textRef}>
-            At <span className="text-[var(--accent)]">Hivemind</span>, we specialize in <span className="font-semibold">smart home automation, intelligent lighting, high-speed networking, and advanced security systems.</span> Our solutions are fully integrated, customizable, and future-ready—built for the modern home.
-          </p>
-          <p className="text-lg md:text-xl relative">
-            Hivemind is an Emirati-owned company based in the UAE, operated and managed by highly skilled Emirati engineers with deep expertise in smart home automation, networking, and security. Our mission is to provide seamless, secure, and cutting-edge technology solutions that enhance modern living in the UAE.
+          <p className="text-lg md:text-xl relative" ref={textRef}>
+            <span className="text-[var(--accent)]">Hivemind</span> is an Emirati-owned company based in the UAE, operated and managed by highly skilled Emirati engineers with deep expertise in <span className="font-semibold">smart home automation, networking, and security</span>. Our mission is to provide seamless, secure, and cutting-edge technology solutions that enhance modern living in the UAE.
           </p>
         </div>
       </div>

@@ -28,12 +28,6 @@ const features = [
     description: 'Automation that optimizes energy use.',
     icon: '/icons/energy.svg',
   },
-  {
-    id: 5,
-    title: 'Local Expertise, Trusted by UAE Homes & Businesses',
-    description: 'As a UAE-based company led by Emirati engineers, we bring a deep understanding of local infrastructure, security regulations, and environmental factors, ensuring tailored smart home solutions designed for homes and businesses in the region.',
-    icon: '/icons/uae-flag.svg',
-  },
 ];
 
 const WhyChooseUs = () => {
@@ -47,7 +41,26 @@ const WhyChooseUs = () => {
           We deliver excellence in every aspect of smart home technology
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <div className="flex items-center space-x-4 p-6 rounded-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition-colors mb-8 mt-12">
+          <div className="flex-shrink-0">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--accent)]">
+              <Image 
+                src="/icons/uae-flag.svg" 
+                alt="Local Expertise" 
+                width={24} 
+                height={24}
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Local Expertise, Trusted by UAE Homes & Businesses</h3>
+            <p className="opacity-90">
+              As a UAE-based company led by Emirati engineers, we bring a deep understanding of local infrastructure, security regulations, and environmental factors, ensuring tailored smart home solutions designed for homes and businesses in the region.
+            </p>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature) => (
             <div key={feature.id} className="flex items-start space-x-4 p-6 rounded-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition-colors">
               <div className="flex-shrink-0">
