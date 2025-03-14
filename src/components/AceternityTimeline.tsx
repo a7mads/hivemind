@@ -67,7 +67,7 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="https://images.unsplash.com/photo-1563770660941-10a63607692e?q=80&w=2070&auto=format&fit=crop"
+            src="/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png"
             alt="Installation & Setup" 
             fill
             className="object-cover transition-all duration-500 hover:scale-105"
@@ -75,7 +75,7 @@ const timelineData: TimelineEntry[] = [
         </div>
       </div>
     ),
-    image: "https://images.unsplash.com/photo-1563770660941-10a63607692e?q=80&w=2070&auto=format&fit=crop"
+    image: "/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png"
   },
   {
     title: "Week 3",
