@@ -31,14 +31,21 @@ const partnerLogos = [
 const PartnerLogos: React.FC = () => {
   const firstRowRef = useRef<HTMLDivElement>(null);
   const secondRowRef = useRef<HTMLDivElement>(null);
+  // Store animation instances in refs
+  const firstRowAnimRef = useRef<gsap.core.Tween | null>(null);
+  const secondRowAnimRef = useRef<gsap.core.Tween | null>(null);
 
   useEffect(() => {
     console.log('PartnerLogos component mounted');
     
+    // Store local references to DOM elements to avoid cleanup issues
+    const firstRowElement = firstRowRef.current;
+    const secondRowElement = secondRowRef.current;
+    
     try {
       // Animate the first row to move left
-      if (firstRowRef.current) {
-        gsap.to(firstRowRef.current, {
+      if (firstRowElement) {
+        firstRowAnimRef.current = gsap.to(firstRowElement, {
           x: '-50%',
           repeat: -1,
           duration: 30,
@@ -47,8 +54,8 @@ const PartnerLogos: React.FC = () => {
       }
 
       // Animate the second row to move right
-      if (secondRowRef.current) {
-        gsap.to(secondRowRef.current, {
+      if (secondRowElement) {
+        secondRowAnimRef.current = gsap.to(secondRowElement, {
           x: '0%', // Start from -50% (set in the style)
           repeat: -1,
           duration: 30,
@@ -61,23 +68,24 @@ const PartnerLogos: React.FC = () => {
       console.error('Error creating GSAP animation:', error);
       
       // Fallback to CSS animations if GSAP fails
-      if (firstRowRef.current) {
-        firstRowRef.current.style.animation = 'scroll-left 30s linear infinite';
+      if (firstRowElement) {
+        firstRowElement.style.animation = 'scroll-left 30s linear infinite';
       }
       
-      if (secondRowRef.current) {
-        secondRowRef.current.style.animation = 'scroll-right 30s linear infinite';
+      if (secondRowElement) {
+        secondRowElement.style.animation = 'scroll-right 30s linear infinite';
       }
     }
 
     return () => {
-      // Clean up animations
+      // Clean up animations using the stored animation instances
       try {
-        if (firstRowRef.current) {
-          gsap.killTweensOf(firstRowRef.current);
+        // Kill the animations directly
+        if (firstRowAnimRef.current) {
+          firstRowAnimRef.current.kill();
         }
-        if (secondRowRef.current) {
-          gsap.killTweensOf(secondRowRef.current);
+        if (secondRowAnimRef.current) {
+          secondRowAnimRef.current.kill();
         }
       } catch (error) {
         console.error('Error cleaning up GSAP animations:', error);

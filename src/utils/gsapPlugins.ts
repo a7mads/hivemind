@@ -176,6 +176,7 @@ export { gsap, ScrollTrigger };
 export const SplitText = CustomSplitText;
 export const DrawSVGPlugin = {
   name: "drawSVG",
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   init(target: SVGElement, vars: Record<string, unknown>) {
     // Check if it's an SVG path element
     if (!target || target.tagName !== 'path') return false;
