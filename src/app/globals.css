@@ -127,3 +127,22 @@ h1, h2, h3, h4, h5, h6 {
 .is-mobile .scroll-container {
   transform: none !important;
 }
+
+/* Fallback animations for brand scrolling */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

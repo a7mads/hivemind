@@ -1,15 +1,45 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+console.log('GSAP version:', gsap.version);
+
 // Only register plugins on the client side
 if (typeof window !== 'undefined') {
   try {
     // Register ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
     console.log('GSAP plugins registered successfully');
+    
+    // Custom DrawSVG implementation (simplified version)
+    const CustomDrawSVGPlugin = {
+      name: "drawSVG",
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      init(target: SVGElement, vars: Record<string, unknown>) {
+        // Check if it's an SVG path element
+        if (!target || target.tagName !== 'path') return false;
+        
+        // Simple implementation that just sets the stroke-dashoffset and stroke-dasharray
+        // This is a very simplified version and won't work exactly like the real DrawSVGPlugin
+        const pathElement = target as SVGPathElement;
+        const length = pathElement.getTotalLength ? pathElement.getTotalLength() : 100;
+        
+        gsap.set(target, {
+          strokeDasharray: length,
+          strokeDashoffset: length
+        });
+        
+        return true;
+      }
+    };
+    
+    // Register the custom DrawSVG plugin
+    gsap.registerPlugin(CustomDrawSVGPlugin);
+    console.log('GSAP registered:', gsap);
   } catch (e) {
-    console.warn('Failed to register GSAP plugins:', e);
+    console.error('Failed to register GSAP plugins:', e);
   }
+} else {
+  console.log('gsapPlugins.ts: Not on client side, skipping plugin registration');
 }
 
 // Custom SplitText implementation (simplified version of GSAP's premium SplitText)
@@ -140,16 +170,17 @@ class CustomSplitText {
   }
 }
 
-// Custom DrawSVG implementation (simplified version)
-const CustomDrawSVGPlugin = {
+// Export GSAP and plugins
+export { gsap, ScrollTrigger };
+// Export our custom implementations with the names expected by the components
+export const SplitText = CustomSplitText;
+export const DrawSVGPlugin = {
   name: "drawSVG",
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   init(target: SVGElement, vars: Record<string, unknown>) {
     // Check if it's an SVG path element
     if (!target || target.tagName !== 'path') return false;
     
     // Simple implementation that just sets the stroke-dashoffset and stroke-dasharray
-    // This is a very simplified version and won't work exactly like the real DrawSVGPlugin
     const pathElement = target as SVGPathElement;
     const length = pathElement.getTotalLength ? pathElement.getTotalLength() : 100;
     
@@ -160,10 +191,4 @@ const CustomDrawSVGPlugin = {
     
     return true;
   }
-};
-
-// Export GSAP and plugins
-export { gsap, ScrollTrigger };
-// Export our custom implementations with the names expected by the components
-export const SplitText = CustomSplitText;
-export const DrawSVGPlugin = CustomDrawSVGPlugin; 
+}; 

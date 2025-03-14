@@ -33,33 +33,54 @@ const PartnerLogos: React.FC = () => {
   const secondRowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Animate the first row to move left
-    if (firstRowRef.current) {
-      gsap.to(firstRowRef.current, {
-        x: '-50%',
-        repeat: -1,
-        duration: 30,
-        ease: 'linear',
-      });
-    }
+    console.log('PartnerLogos component mounted');
+    
+    try {
+      // Animate the first row to move left
+      if (firstRowRef.current) {
+        gsap.to(firstRowRef.current, {
+          x: '-50%',
+          repeat: -1,
+          duration: 30,
+          ease: 'linear',
+        });
+      }
 
-    // Animate the second row to move right
-    if (secondRowRef.current) {
-      gsap.to(secondRowRef.current, {
-        x: '50%',
-        repeat: -1,
-        duration: 30,
-        ease: 'linear',
-      });
+      // Animate the second row to move right
+      if (secondRowRef.current) {
+        gsap.to(secondRowRef.current, {
+          x: '0%', // Start from -50% (set in the style)
+          repeat: -1,
+          duration: 30,
+          ease: 'linear',
+        });
+      }
+
+      console.log('GSAP animation created successfully:', gsap);
+    } catch (error) {
+      console.error('Error creating GSAP animation:', error);
+      
+      // Fallback to CSS animations if GSAP fails
+      if (firstRowRef.current) {
+        firstRowRef.current.style.animation = 'scroll-left 30s linear infinite';
+      }
+      
+      if (secondRowRef.current) {
+        secondRowRef.current.style.animation = 'scroll-right 30s linear infinite';
+      }
     }
 
     return () => {
       // Clean up animations
-      if (firstRowRef.current) {
-        gsap.killTweensOf(firstRowRef.current);
-      }
-      if (secondRowRef.current) {
-        gsap.killTweensOf(secondRowRef.current);
+      try {
+        if (firstRowRef.current) {
+          gsap.killTweensOf(firstRowRef.current);
+        }
+        if (secondRowRef.current) {
+          gsap.killTweensOf(secondRowRef.current);
+        }
+      } catch (error) {
+        console.error('Error cleaning up GSAP animations:', error);
       }
     };
   }, []);
