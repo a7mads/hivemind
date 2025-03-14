@@ -13,7 +13,8 @@ import PageTransition from '../components/PageTransition';
 // Animated components
 import AnimatedFeature from '../components/AnimatedFeature';
 import AnimatedCounter from '../components/AnimatedCounter';
-import AnimatedTimeline from '../components/AnimatedTimeline';
+// import AnimatedTimeline from '../components/AnimatedTimeline';
+import AceternityTimeline from '../components/AceternityTimeline';
 // New animation components
 import SmoothScroll from '../components/SmoothScroll';
 import ScrollSection from '../components/ScrollSection';
@@ -112,7 +113,7 @@ export default function Home() {
         
         {/* Animated Timeline section with scroll animations */}
         <ScrollSection fadeIn slideUp>
-          <AnimatedTimeline />
+          <AceternityTimeline />
         </ScrollSection>
         
         {/* Testimonials section with scroll animations */}
