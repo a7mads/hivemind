@@ -343,15 +343,15 @@ const Contact = () => {
           
           <div className="mt-12 flex flex-col md:flex-row justify-center gap-8 text-center">
             <div>
-              <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-              <a href="mailto:info@hivemind.ae" className="text-[var(--secondary)] hover:underline">
+              <h3 className="font-semibold text-lg mb-2 text-white">Email Us</h3>
+              <a href="mailto:info@hivemind.ae" className="text-white hover:underline">
                 info@hivemind.ae
               </a>
             </div>
             
             <div>
-              <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-              <a href="tel:+1234567890" className="text-[var(--secondary)] hover:underline">
+              <h3 className="font-semibold text-lg mb-2 text-white">Call Us</h3>
+              <a href="tel:+1234567890" className="text-white hover:underline">
                 (123) 456-7890
               </a>
             </div>

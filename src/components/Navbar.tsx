@@ -123,7 +123,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="relative z-10" ref={logoRef}>
-          <div ref={logoImageRef} className="relative h-12 w-48">
+          <div ref={logoImageRef} className="relative h-16 w-56">
             <Image 
               src="/Artboard 1HivemindBlack@4x-trans.png" 
               alt="Hivemind Logo" 
@@ -165,23 +165,9 @@ const Navbar = () => {
             Testimonials
           </Link>
           <Link 
-            href="/animations" 
-            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
-            ref={createRefCallback(4)}
-          >
-            Animations
-          </Link>
-          <Link 
-            href="/scrolltrigger" 
-            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
-            ref={createRefCallback(5)}
-          >
-            ScrollTrigger
-          </Link>
-          <Link 
             href="#contact" 
             className="bg-hivemind-green hover:bg-hivemind-green-dark text-white py-3 px-6 rounded-md font-medium transition-colors"
-            ref={createRefCallback(6)}
+            ref={createRefCallback(4)}
           >
             Contact Us
           </Link>
@@ -192,7 +178,7 @@ const Navbar = () => {
           className="md:hidden text-hivemind-black dark:text-white"
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
-          ref={createRefCallback(7)}
+          ref={createRefCallback(5)}
         >
           {isMobileMenuOpen ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,20 +227,6 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Testimonials
-          </Link>
-          <Link 
-            href="/animations" 
-            className="block text-hivemind-black hover:text-hivemind-green"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Animations
-          </Link>
-          <Link 
-            href="/scrolltrigger" 
-            className="block text-hivemind-black hover:text-hivemind-green"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            ScrollTrigger
           </Link>
           <Link 
             href="#contact" 
