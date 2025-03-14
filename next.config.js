@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com', 'ui.aceternity.com'],
+    domains: ['images.unsplash.com', 'ui.aceternity.com', 'community-assets.home-assistant.io'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -12,6 +12,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'ui.aceternity.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'community-assets.home-assistant.io',
         pathname: '**',
       },
     ],

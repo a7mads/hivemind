@@ -16,44 +16,20 @@ export default function ContainerScrollImageDemo() {
       <ContainerScroll
         titleComponent={
           <h1 className="text-4xl font-bold text-white mb-10">
-            Scroll down to see the <span className="text-blue-500">image</span> animation
+            Scroll down to see the <span className="text-blue-500">Home Assistant</span> dashboard
           </h1>
         }
       >
-        <div className="flex flex-col items-center justify-center h-full bg-gray-800 rounded-lg p-8">
+        <div className="flex flex-col items-center justify-center h-full bg-gray-800 rounded-lg p-4">
           <div className="relative w-full h-full flex items-center justify-center">
-            {/* Using a placeholder image since we couldn't download the original */}
-            <div className="w-full max-w-4xl aspect-video bg-gray-700 rounded-lg overflow-hidden">
-              <div className="w-full h-full p-8 flex flex-col">
-                <div className="flex items-center mb-8">
-                  <div className="w-10 h-10 rounded-full bg-blue-500 mr-4"></div>
-                  <div className="flex-1">
-                    <div className="h-4 bg-gray-600 rounded-full w-1/3 mb-2"></div>
-                    <div className="h-3 bg-gray-600 rounded-full w-1/4"></div>
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  <div className="h-24 bg-gray-600 rounded-lg"></div>
-                  <div className="h-24 bg-gray-600 rounded-lg"></div>
-                  <div className="h-24 bg-gray-600 rounded-lg"></div>
-                </div>
-                
-                <div className="flex-1 grid grid-cols-2 gap-4">
-                  <div className="bg-gray-600 rounded-lg p-4">
-                    <div className="h-4 bg-gray-500 rounded-full w-1/2 mb-4"></div>
-                    <div className="h-3 bg-gray-500 rounded-full w-full mb-2"></div>
-                    <div className="h-3 bg-gray-500 rounded-full w-4/5 mb-2"></div>
-                    <div className="h-3 bg-gray-500 rounded-full w-3/5"></div>
-                  </div>
-                  <div className="bg-gray-600 rounded-lg p-4">
-                    <div className="h-4 bg-gray-500 rounded-full w-1/2 mb-4"></div>
-                    <div className="h-3 bg-gray-500 rounded-full w-full mb-2"></div>
-                    <div className="h-3 bg-gray-500 rounded-full w-4/5 mb-2"></div>
-                    <div className="h-3 bg-gray-500 rounded-full w-3/5"></div>
-                  </div>
-                </div>
-              </div>
+            <div className="w-full h-full relative overflow-hidden rounded-lg">
+              <Image 
+                src="https://community-assets.home-assistant.io/optimized/4X/a/8/8/a886ed39c8a7c326dbf02061150a07a00849bb1f_2_1380x842.jpeg"
+                alt="Home Assistant Dashboard"
+                fill
+                priority
+                className="object-contain"
+              />
             </div>
           </div>
         </div>
