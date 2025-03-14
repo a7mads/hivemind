@@ -27,15 +27,17 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png"
+            src={`/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png`}
             alt="Consultation & Planning in an elegant minimalist interior" 
             fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
     ),
-    image: "/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png"
+    image: `/images/timeline/Elegant Minimalist Interior Design Scene Art Poster.png`
   },
   {
     title: "Week 1",
@@ -50,6 +52,8 @@ const timelineData: TimelineEntry[] = [
             src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
             alt="System Design & Preparation" 
             fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
@@ -67,15 +71,17 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png"
+            src={`/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png`}
             alt="Installation & Setup" 
             fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
     ),
-    image: "/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png"
+    image: `/images/timeline/Modern Pleated Table Lamp Design Photograph for Cozy Ambiance Art.png`
   },
   {
     title: "Week 3",
@@ -87,15 +93,17 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="relative w-full h-48 rounded-lg overflow-hidden">
           <Image 
-            src="/images/timeline/Modern Minimalist Home Office Workspace Virtual Background.png"
+            src={`/images/timeline/Modern Minimalist Home Office Workspace Virtual Background.png`}
             alt="Testing & Training" 
             fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
       </div>
     ),
-    image: "/images/timeline/Modern Minimalist Home Office Workspace Virtual Background.png"
+    image: `/images/timeline/Modern Minimalist Home Office Workspace Virtual Background.png`
   },
   {
     title: "Ongoing",
@@ -110,6 +118,8 @@ const timelineData: TimelineEntry[] = [
             src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop"
             alt="Support & Maintenance" 
             fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-all duration-500 hover:scale-105"
           />
         </div>
