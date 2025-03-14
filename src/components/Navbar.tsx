@@ -165,6 +165,13 @@ const Navbar = () => {
             Testimonials
           </Link>
           <Link 
+            href="/container-scroll" 
+            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
+            ref={createRefCallback(5)}
+          >
+            Container Scroll
+          </Link>
+          <Link 
             href="#contact" 
             className="bg-hivemind-green hover:bg-hivemind-green-dark text-white py-3 px-6 rounded-md font-medium transition-colors"
             ref={createRefCallback(4)}
@@ -178,7 +185,7 @@ const Navbar = () => {
           className="md:hidden text-hivemind-black dark:text-white"
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
-          ref={createRefCallback(5)}
+          ref={createRefCallback(6)}
         >
           {isMobileMenuOpen ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,6 +234,13 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Testimonials
+          </Link>
+          <Link 
+            href="/container-scroll" 
+            className="block text-hivemind-black hover:text-hivemind-green"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Container Scroll
           </Link>
           <Link 
             href="#contact" 
