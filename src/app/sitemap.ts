@@ -19,11 +19,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Add more routes as needed
   ];
 
+  // Define language paths - currently only English, but preparing for Arabic
+  const languages = [
+    { code: 'en-US', path: '' }, // Default language (no prefix)
+    // Uncomment when Arabic version is ready
+    // { code: 'ar-AE', path: '/ar-AE' },
+  ];
+
   // Current date for lastModified
   const date = new Date();
 
-  // Generate sitemap entries
-  return routes.map(route => {
+  // Generate sitemap entries for all routes in all languages
+  const sitemapEntries: MetadataRoute.Sitemap = [];
+
+  // Add entries for current language (English)
+  routes.forEach(route => {
     // Set priority based on the route
     let priority = 0.7;
     if (route === '') {
@@ -46,11 +56,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency = 'weekly'; // Product pages change weekly
     }
 
-    return {
+    sitemapEntries.push({
       url: `${baseUrl}${route}`,
       lastModified: date,
       changeFrequency,
       priority,
-    };
+    });
+
+    // Add a commented entry for future Arabic version
+    // This won't be active in the sitemap but serves as a placeholder
+    /* Future Arabic version
+    sitemapEntries.push({
+      url: `${baseUrl}/ar-AE${route}`,
+      lastModified: date,
+      changeFrequency,
+      priority: priority * 0.9, // Slightly lower priority for non-primary language
+    });
+    */
   });
+
+  return sitemapEntries;
 } 

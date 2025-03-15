@@ -32,7 +32,7 @@ export function OrganizationJsonLd() {
       telephone: '+1-123-456-7890', // Replace with your actual contact information
       contactType: 'customer service',
       email: 'info@hivemind.ae', // Replace with your actual email
-      availableLanguage: 'English',
+      availableLanguage: ['English', 'Arabic'],
     },
   };
 

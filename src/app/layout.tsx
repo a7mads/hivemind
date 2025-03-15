@@ -12,8 +12,8 @@ const rajdhani = Rajdhani({
 
 export const metadata: Metadata = {
   title: "Hivemind - Smart Home Automation & Security Solutions",
-  description: "Advanced technology that makes your home safer, smarter, and more efficient—effortlessly. Discover our innovative smart home solutions today.",
-  keywords: "smart home, home automation, security solutions, smart security, IoT, connected home, home technology",
+  description: "Advanced technology that makes your home safer, smarter, and more efficient—effortlessly. Discover our innovative smart home solutions today. Coming soon in Arabic.",
+  keywords: "smart home, home automation, security solutions, smart security, IoT, connected home, home technology, UAE, Abu Dhabi, Dubai, Arabic, المنزل الذكي, أتمتة المنزل",
   authors: [{ name: "Hivemind" }],
   creator: "Hivemind",
   publisher: "Hivemind",
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     canonical: '/',
     languages: {
       'en-US': '/en-US',
+      'ar-AE': '/ar-AE', // Future Arabic (UAE) support
     },
   },
   openGraph: {
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
       },
     ],
     locale: 'en_US',
+    alternateLocale: ['ar_AE'], // Add Arabic locale for future support
     type: 'website',
   },
   twitter: {
@@ -84,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
       <body className={`${rajdhani.variable} antialiased`}>
         <OrganizationJsonLd />
         {children}
