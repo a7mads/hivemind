@@ -12,11 +12,6 @@ export async function GET(request: NextRequest) {
     const description = searchParams.get('description') || 'Smart Home Automation & Security Solutions';
     const template = searchParams.get('template') || 'default';
     
-    // Define font
-    const fontData = await fetch(
-      new URL('../../../../public/fonts/Rajdhani-Bold.ttf', import.meta.url)
-    ).then((res) => res.arrayBuffer());
-    
     // Background color based on template
     let bgColor = '#000000';
     if (template === 'product') {
@@ -38,7 +33,7 @@ export async function GET(request: NextRequest) {
             backgroundColor: bgColor,
             color: 'white',
             padding: '40px',
-            fontFamily: 'Rajdhani',
+            fontFamily: 'sans-serif',
           }}
         >
           <div
@@ -49,12 +44,23 @@ export async function GET(request: NextRequest) {
               marginBottom: '20px',
             }}
           >
-            <img
-              src={`https://hivemind.com/Artboard 1HivemindBlack@4x-trans.png`} // Replace with your actual logo URL
-              alt="Hivemind Logo"
-              width={120}
-              height={120}
-            />
+            {/* Logo placeholder - in production, use an absolute URL to your logo */}
+            <div
+              style={{
+                width: '120px',
+                height: '120px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#ffffff',
+                borderRadius: '50%',
+                color: bgColor,
+                fontSize: '24px',
+                fontWeight: 'bold',
+              }}
+            >
+              HIVEMIND
+            </div>
           </div>
           <h1
             style={{
@@ -93,14 +99,6 @@ export async function GET(request: NextRequest) {
       {
         width: 1200,
         height: 630,
-        fonts: [
-          {
-            name: 'Rajdhani',
-            data: fontData,
-            style: 'normal',
-            weight: 700,
-          },
-        ],
       }
     );
   } catch (error) {
