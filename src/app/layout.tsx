@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Rajdhani } from "next/font/google";
 import "./globals.css";
 import { OrganizationJsonLd } from "@/components/SEO/JsonLd";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -90,6 +92,8 @@ export default function RootLayout({
       <body className={`${rajdhani.variable} antialiased`}>
         <OrganizationJsonLd />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
