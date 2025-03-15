@@ -15,6 +15,5 @@ export const CookieConsent: React.FC<{ children?: React.ReactNode }> = ({ childr
   );
 };
 
-// Export a hook to manage cookie consent in other components
-export { useCookieConsent } from './CookieConsentContext';
+// Export only hasCookieConsent, remove useCookieConsent export
 export { hasCookieConsent } from '@/utils/cookies'; 

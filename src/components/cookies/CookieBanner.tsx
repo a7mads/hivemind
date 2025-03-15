@@ -29,7 +29,7 @@ export const CookieBanner: React.FC = () => {
                 We value your privacy
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+                We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking &quot;Accept All&quot;, you consent to our use of cookies.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 mt-2 md:mt-0">
