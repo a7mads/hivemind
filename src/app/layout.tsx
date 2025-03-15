@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Rajdhani } from "next/font/google";
 import "./globals.css";
+import { OrganizationJsonLd } from "@/components/SEO/JsonLd";
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -11,7 +12,51 @@ const rajdhani = Rajdhani({
 
 export const metadata: Metadata = {
   title: "Hivemind - Smart Home Automation & Security Solutions",
-  description: "Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.",
+  description: "Advanced technology that makes your home safer, smarter, and more efficient—effortlessly. Discover our innovative smart home solutions today.",
+  keywords: "smart home, home automation, security solutions, smart security, IoT, connected home, home technology",
+  authors: [{ name: "Hivemind" }],
+  creator: "Hivemind",
+  publisher: "Hivemind",
+  metadataBase: new URL('https://hivemind.com'), // Replace with your actual domain
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+    },
+  },
+  openGraph: {
+    title: "Hivemind - Smart Home Automation & Security Solutions",
+    description: "Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.",
+    url: 'https://hivemind.com', // Replace with your actual domain
+    siteName: 'Hivemind',
+    images: [
+      {
+        url: '/og-image.jpg', // Create and add this image to your public folder
+        width: 1200,
+        height: 630,
+        alt: 'Hivemind - Smart Home Solutions',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hivemind - Smart Home Automation & Security Solutions',
+    description: 'Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.',
+    images: ['/twitter-image.jpg'], // Create and add this image to your public folder
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: [
       {
@@ -41,6 +86,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${rajdhani.variable} antialiased`}>
+        <OrganizationJsonLd />
         {children}
       </body>
     </html>
