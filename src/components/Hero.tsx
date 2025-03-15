@@ -14,7 +14,7 @@ import ParallaxImage from './ParallaxImage';
 // hero-bg-alt5.jpg: High-tech smart home with futuristic interface
 // hero-bg-alt6.jpg: Elegant living room with smart home integration
 // hero-bg-alt7.jpg: Modern smart home with advanced technology display
-const imagePath = '/hero-bg-alt3.jpg'; // Change this to try different images
+const imagePath = '/hero-bg-alt7.jpg'; // Change this to try different images
 
 const Hero = () => {
   // Create refs for elements we want to animate
