@@ -165,20 +165,6 @@ const Navbar = () => {
             Testimonials
           </Link>
           <Link 
-            href="/container-scroll" 
-            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
-            ref={createRefCallback(5)}
-          >
-            Container Scroll
-          </Link>
-          <Link 
-            href="/container-scroll-image" 
-            className={`${isScrolled ? 'text-hivemind-black' : 'text-white'} hover:text-hivemind-green transition-colors`}
-            ref={createRefCallback(6)}
-          >
-            Scroll Image
-          </Link>
-          <Link 
             href="#contact" 
             className="bg-hivemind-green hover:bg-hivemind-green-dark text-white py-3 px-6 rounded-md font-medium transition-colors"
             ref={createRefCallback(4)}
@@ -241,20 +227,6 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Testimonials
-          </Link>
-          <Link 
-            href="/container-scroll" 
-            className="block text-hivemind-black hover:text-hivemind-green"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Container Scroll
-          </Link>
-          <Link 
-            href="/container-scroll-image" 
-            className="block text-hivemind-black hover:text-hivemind-green"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Scroll Image
           </Link>
           <Link 
             href="#contact" 

@@ -9,8 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/basic',
     '/simple',
-    '/container-scroll',
-    '/container-scroll-image',
     '/gsap-test',
     '/products',
     '/blog',
