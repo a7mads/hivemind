@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   description: 'Discover the top 5 smart home security features that every modern home should have in 2024. Learn how these technologies can protect your family and property.',
   keywords: 'smart home security, home security features, smart security, 2024 security trends, home protection',
   alternates: {
-    canonical: 'https://hivemind.com/blog/smart-home-security',
+    canonical: 'https://hivemind.ae/blog/smart-home-security',
   },
   openGraph: {
     title: '5 Essential Smart Home Security Features for 2024',
     description: 'Discover the top 5 smart home security features that every modern home should have in 2024.',
-    url: 'https://hivemind.com/blog/smart-home-security',
+    url: 'https://hivemind.ae/blog/smart-home-security',
     siteName: 'Hivemind',
     images: [
       {

@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   description: 'Explore the latest articles, guides, and news about smart home technology, automation, and security solutions.',
   keywords: 'smart home blog, home automation blog, security blog, smart technology articles',
   alternates: {
-    canonical: 'https://hivemind.com/blog',
+    canonical: 'https://hivemind.ae/blog',
   },
   openGraph: {
     title: 'Smart Home Blog | Hivemind',
     description: 'Explore the latest articles, guides, and news about smart home technology, automation, and security solutions.',
-    url: 'https://hivemind.com/blog',
+    url: 'https://hivemind.ae/blog',
     siteName: 'Hivemind',
     images: [
       {

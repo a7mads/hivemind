@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
               justifyContent: 'center',
             }}
           >
-            <p style={{ fontSize: '24px', margin: '0' }}>hivemind.com</p>
+            <p style={{ fontSize: '24px', margin: '0' }}>hivemind.ae</p>
           </div>
         </div>
       ),

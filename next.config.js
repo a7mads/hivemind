@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com', 'ui.aceternity.com', 'community-assets.home-assistant.io', 'hivemind.com'],
+    domains: ['images.unsplash.com', 'ui.aceternity.com', 'community-assets.home-assistant.io', 'hivemind.ae'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -21,7 +21,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'hivemind.com',
+        hostname: 'hivemind.ae',
         pathname: '**',
       },
     ],
@@ -47,10 +47,10 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'hivemind.com', // Replace with your actual domain
+            value: 'hivemind.ae', // Replace with your actual domain
           },
         ],
-        destination: 'https://www.hivemind.com/:path*', // Replace with your actual domain
+        destination: 'https://www.hivemind.ae/:path*', // Replace with your actual domain
         permanent: true,
       },
     ];

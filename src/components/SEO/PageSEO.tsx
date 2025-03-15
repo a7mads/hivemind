@@ -16,7 +16,7 @@ export function generateMetadata({
   twitterImage = '/twitter-image.jpg',
 }: PageSEOProps): Metadata {
   // Replace with your actual domain
-  const baseUrl = 'https://hivemind.com';
+  const baseUrl = 'https://hivemind.ae';
   
   return {
     title,

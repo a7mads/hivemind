@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Hivemind" }],
   creator: "Hivemind",
   publisher: "Hivemind",
-  metadataBase: new URL('https://hivemind.com'), // Replace with your actual domain
+  metadataBase: new URL('https://hivemind.ae'), // Replace with your actual domain
   alternates: {
     canonical: '/',
     languages: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hivemind - Smart Home Automation & Security Solutions",
     description: "Advanced technology that makes your home safer, smarter, and more efficient—effortlessly.",
-    url: 'https://hivemind.com', // Replace with your actual domain
+    url: 'https://hivemind.ae', // Replace with your actual domain
     siteName: 'Hivemind',
     images: [
       {

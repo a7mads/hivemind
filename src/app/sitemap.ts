@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Replace with your actual domain
-  const baseUrl = 'https://hivemind.com';
+  const baseUrl = 'https://hivemind.ae';
   
   // Define your routes - add all your important pages here
   const routes = [

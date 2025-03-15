@@ -47,12 +47,12 @@ export const metadata: Metadata = {
   description: 'Discover our range of innovative smart home products. From security cameras to smart locks, find the perfect solution for your home.',
   keywords: 'smart home products, security cameras, smart locks, home automation products',
   alternates: {
-    canonical: 'https://hivemind.com/products',
+    canonical: 'https://hivemind.ae/products',
   },
   openGraph: {
     title: 'Smart Home Products | Hivemind',
     description: 'Discover our range of innovative smart home products. From security cameras to smart locks, find the perfect solution for your home.',
-    url: 'https://hivemind.com/products',
+    url: 'https://hivemind.ae/products',
     siteName: 'Hivemind',
     images: [
       {

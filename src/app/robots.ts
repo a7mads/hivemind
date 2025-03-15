@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'], // Add any paths you want to exclude from crawling
     },
-    sitemap: 'https://hivemind.com/sitemap.xml', // Replace with your actual domain
+    sitemap: 'https://hivemind.ae/sitemap.xml', // Replace with your actual domain
   };
 } 

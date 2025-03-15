@@ -19,8 +19,8 @@ export function OrganizationJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Hivemind',
-    url: 'https://hivemind.com', // Replace with your actual domain
-    logo: 'https://hivemind.com/Artboard 1HivemindBlack@4x-trans.png', // Replace with your actual logo URL
+    url: 'https://hivemind.ae', // Replace with your actual domain
+    logo: 'https://hivemind.ae/Artboard 1HivemindBlack@4x-trans.png', // Replace with your actual logo URL
     sameAs: [
       'https://www.facebook.com/hivemind', // Replace with your actual social media URLs
       'https://www.twitter.com/hivemind',
@@ -31,7 +31,7 @@ export function OrganizationJsonLd() {
       '@type': 'ContactPoint',
       telephone: '+1-123-456-7890', // Replace with your actual contact information
       contactType: 'customer service',
-      email: 'info@hivemind.com', // Replace with your actual email
+      email: 'info@hivemind.ae', // Replace with your actual email
       availableLanguage: 'English',
     },
   };
@@ -81,7 +81,7 @@ export function ProductJsonLd({
       price,
       priceCurrency: currency,
       availability,
-      url: 'https://hivemind.com/products/' + sku, // Replace with your actual product URL pattern
+      url: 'https://hivemind.ae/products/' + sku, // Replace with your actual product URL pattern
     },
     ...(reviewCount && ratingValue
       ? {
