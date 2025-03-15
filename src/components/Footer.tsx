@@ -10,20 +10,25 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="mb-8">
-              <Image 
-                src="/images/logo/hivemind-logo.png" 
-                alt="Hivemind Logo" 
-                width={600} 
-                height={140} 
-                priority
-                className="mb-6 filter brightness-0 invert"
-                style={{ 
-                  objectFit: 'contain', 
-                  height: '140px', 
-                  width: 'auto',
-                  objectPosition: 'left center',
-                }}
-              />
+              <div className="flex flex-col items-start">
+                <Image 
+                  src="/images/logo/hivemind-logo.png" 
+                  alt="Hivemind Logo" 
+                  width={384} 
+                  height={90} 
+                  priority
+                  className="mb-2 filter brightness-0 invert"
+                  style={{ 
+                    objectFit: 'contain', 
+                    height: '90px', 
+                    width: 'auto',
+                    objectPosition: 'left center',
+                  }}
+                />
+                <span className="font-semibold tracking-wider text-xl text-white mb-4">
+                  HIVEMIND
+                </span>
+              </div>
               <div className="flex items-center mt-2 bg-white bg-opacity-10 p-2 rounded-md inline-block">
                 <Image 
                   src="/icons/uae-flag.svg" 

@@ -122,19 +122,28 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="relative z-10" ref={logoRef}>
-          <div ref={logoImageRef} className="relative h-20 w-64">
-            <Image 
-              src="/images/logo/hivemind-logo.png" 
-              alt="Hivemind Logo" 
-              fill
-              priority
-              style={{ 
-                objectFit: 'contain',
-                objectPosition: 'left center',
-              }}
-              className={isScrolled ? 'opacity-100' : 'opacity-100 filter brightness-0 invert'}
-            />
+        <Link href="/" className="relative z-10 pt-2" ref={logoRef}>
+          <div className="flex flex-col items-center">
+            <div ref={logoImageRef} className="relative h-12 w-40">
+              <Image 
+                src="/images/logo/hivemind-logo.png" 
+                alt="Hivemind Logo" 
+                fill
+                priority
+                style={{ 
+                  objectFit: 'contain',
+                  objectPosition: 'center center',
+                }}
+                className={isScrolled ? 'opacity-100' : 'opacity-100 filter brightness-0 invert'}
+              />
+            </div>
+            <span 
+              className={`font-semibold tracking-wider text-lg mt-1 ${
+                isScrolled ? 'text-hivemind-black dark:text-white' : 'text-white'
+              }`}
+            >
+              HIVEMIND
+            </span>
           </div>
         </Link>
 
