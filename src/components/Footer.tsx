@@ -11,12 +11,18 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="mb-8">
               <Image 
-                src="/Artboard 1HivemindBlack@4x-trans.png" 
+                src="/images/logo/hivemind-logo.png" 
                 alt="Hivemind Logo" 
-                width={550} 
-                height={120} 
+                width={600} 
+                height={140} 
+                priority
                 className="mb-6 filter brightness-0 invert"
-                style={{ objectFit: 'contain', height: '120px', width: 'auto' }}
+                style={{ 
+                  objectFit: 'contain', 
+                  height: '140px', 
+                  width: 'auto',
+                  objectPosition: 'left center',
+                }}
               />
               <div className="flex items-center mt-2 bg-white bg-opacity-10 p-2 rounded-md inline-block">
                 <Image 
