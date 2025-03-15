@@ -4,6 +4,7 @@ import "./globals.css";
 import { OrganizationJsonLd } from "@/components/SEO/JsonLd";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { CookieConsent } from "@/components/cookies";
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -90,10 +91,12 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body className={`${rajdhani.variable} antialiased`}>
-        <OrganizationJsonLd />
-        {children}
-        <Analytics />
-        <SpeedInsights />
+        <CookieConsent>
+          <OrganizationJsonLd />
+          {children}
+          <Analytics />
+          <SpeedInsights />
+        </CookieConsent>
       </body>
     </html>
   );
