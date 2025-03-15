@@ -3,13 +3,11 @@
 import React from 'react';
 import { useCookieConsent } from './CookieConsentContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { hasConsentBeenGiven } from '@/utils/cookies';
 
 export const CookieBanner: React.FC = () => {
-  const { acceptAll, rejectNonEssential, openPreferences } = useCookieConsent();
-  const consentGiven = hasConsentBeenGiven();
-
-  if (consentGiven) {
+  const { consent, acceptAll, rejectNonEssential, openPreferences } = useCookieConsent();
+  
+  if (consent.consentGiven) {
     return null;
   }
 

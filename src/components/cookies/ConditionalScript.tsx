@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
-import { hasCookieConsent } from '@/utils/cookies';
 import { CookieCategory } from '@/types/cookies';
+import { useCookieConsent } from './CookieConsentContext';
 
 interface ConditionalScriptProps {
   src: string;
@@ -20,28 +20,18 @@ export const ConditionalScript: React.FC<ConditionalScriptProps> = ({
   strategy = 'afterInteractive',
   onLoad,
 }) => {
+  const { consent } = useCookieConsent();
   const [hasConsent, setHasConsent] = useState(false);
 
-  // Check for consent on mount and whenever localStorage changes
+  // Check for consent whenever the consent state changes
   useEffect(() => {
-    // Initial check
-    setHasConsent(hasCookieConsent(category));
-
-    // Listen for storage events (when consent changes)
-    const handleStorageChange = () => {
-      setHasConsent(hasCookieConsent(category));
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    
-    // Custom event for our own consent changes
-    window.addEventListener('cookieConsentChanged', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('cookieConsentChanged', handleStorageChange);
-    };
-  }, [category]);
+    // If no consent given yet, only necessary cookies are allowed
+    if (!consent.consentGiven) {
+      setHasConsent(category === 'necessary');
+    } else {
+      setHasConsent(consent[category]);
+    }
+  }, [consent, category]);
 
   if (!hasConsent) {
     return null;
