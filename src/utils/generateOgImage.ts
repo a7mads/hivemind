@@ -17,9 +17,6 @@ type GenerateOgImageParams = {
  * @returns URL string for the OG image
  */
 export function generateOgImageUrl({
-  title,
-  description = '',
-  siteName = 'Hivemind',
   template = 'default',
 }: GenerateOgImageParams): string {
   // For a real implementation, you would use a service like Vercel OG Image Generation

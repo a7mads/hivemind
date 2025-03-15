@@ -101,13 +101,6 @@ const nextConfig = {
   },
   // Enable compression for better performance
   compress: true,
-  // Optimize for production builds
-  swcMinify: true,
-  // Configure i18n for international SEO (if needed)
-  i18n: {
-    locales: ['en', 'fr', 'es'],
-    defaultLocale: 'en',
-  },
 };
 
 module.exports = nextConfig; 

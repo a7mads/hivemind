@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
 // Generate metadata for the blog post
@@ -85,7 +84,7 @@ export default function BlogPost() {
         
         <h2>3. Comprehensive Sensor Networks</h2>
         <p>
-          Beyond motion sensors, today's smart homes benefit from a network of specialized sensors that can detect:
+          Beyond motion sensors, today&apos;s smart homes benefit from a network of specialized sensors that can detect:
         </p>
         <ul>
           <li>Glass breaking</li>
@@ -95,7 +94,7 @@ export default function BlogPost() {
           <li>Temperature changes</li>
         </ul>
         <p>
-          These sensors work together to provide complete awareness of your home's status, whether you're there or away.
+          These sensors work together to provide complete awareness of your home&apos;s status, whether you&apos;re there or away.
         </p>
         
         <h2>4. Integrated Video Doorbells</h2>
@@ -110,7 +109,7 @@ export default function BlogPost() {
         
         <h3>Conclusion</h3>
         <p>
-          Implementing these five essential security features can significantly enhance your home's protection. As smart home technology continues to evolve, we can expect even more innovative solutions to emerge, making our homes safer and more responsive to our needs.
+          Implementing these five essential security features can significantly enhance your home&apos;s protection. As smart home technology continues to evolve, we can expect even more innovative solutions to emerge, making our homes safer and more responsive to our needs.
         </p>
         
         <div className="mt-8 p-6 bg-gray-100 rounded-lg">
