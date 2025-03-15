@@ -20,11 +20,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Define language paths - currently only English, but preparing for Arabic
+  // Commented out to avoid unused variable error, uncomment when implementing Arabic support
+  /*
   const languages = [
     { code: 'en-US', path: '' }, // Default language (no prefix)
     // Uncomment when Arabic version is ready
     // { code: 'ar-AE', path: '/ar-AE' },
   ];
+  */
 
   // Current date for lastModified
   const date = new Date();
